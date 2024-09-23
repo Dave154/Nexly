@@ -1,0 +1,69 @@
+ 
+ *{
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+:root{
+  --primary: #1c1c1c;
+  --secondary: #2C2C2C;
+  --accent: #23714d;
+  --hover:#41403f;
+  --text:#f1ccba;
+  --text2:#C3C3C3;
+  --text_dark:#1c1c1c;
+  --padding1:.4rem;
+  --border_rad1:10px;
+   --border_rad2:.2rem;
+
+   --font1: 3rem;
+   --font2: 2rem;
+   --font3:1rem;
+   --font4:.8rem;
+   --font5:.5rem;
+}
+ul{
+  list-style:none; 
+}
+input,button{
+  border: 0;
+  outline: 0;
+  background: transparent;
+  color: var(--text2);
+}
+button{
+  cursor: pointer;
+}
+img{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+ .MuiSkeleton-root{
+  background: var(--primary);
+  font-size: 1.4rem !important;
+
+ }
+ .MuiSkeleton-root::after{
+  background:var(--hover) !important;
+}
+.flex{
+  display: flex;
+  align-items: center;
+}
+.d_grid{
+  display: grid;
+}
+body{
+  color: var(--text);
+  background: var(--primary);
+}
+.clickable{
+  cursor: pointer;
+  padding: .3rem;
+  border-radius: var(--border_rad1);
+}
+.clickable:hover{
+  background: var(--hover);
+}
+

@@ -1,0 +1,96 @@
+.sideBar{
+	position: fixed;
+	top: 0;
+	height: 100%;
+	width: 3rem;
+	z-index: 90;
+	border-radius: 0 var(--border_rad1) var(--border_rad1) 0;
+	transition:  background .5s, width .5s  ease;
+
+}
+.sideBar.active{
+	width: 13rem;
+	background: var(--secondary);
+}
+.sideBar_container{
+	margin-top: 3rem;
+	padding: var(--padding1);
+	position: relative;
+	grid-template-rows: 1fr;
+	height: 100vh;
+}
+.content2{
+
+}
+.list{
+	gap: .5rem;
+	position: relative;
+	padding-block: 2rem;
+}
+.content1 > .menu_bar{
+	font-size: 2.5rem;
+	padding: 0;
+}
+.content1 > .menu_bar, .list_item{
+	position: relative;
+	padding: .5rem;
+	border-radius: var(--border_rad1);
+	display:flex;
+	align-items: center;
+	justify-content: space-between;
+	cursor: pointer;
+}
+.content1 > .menu_bar:hover ,
+.list_item:hover,
+.list_item.active{
+	background: var(--hover);
+	backdrop-filter: blur(10px);
+}
+
+.list_item .left{
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+
+}
+.list_item .left p{
+	opacity: 0;
+	display: none;
+}
+.sideBar.active .list_item .left p{
+	opacity: 1;
+	display: block;
+	transition: opacity .4s display 1s 4s ease;
+}
+
+.activity{
+	position: absolute;
+	top: 0;
+	left: 0;
+	background: var(--accent);
+	width: .7rem;
+	height: .7rem;
+	border-radius: 50%;
+}
+.sideBar.active .activity{
+	position: relative;
+}
+.activity span{
+	position: absolute;
+	font-size: .7rem;
+	color: var(--primary);
+	display: grid;
+	inset: 0;
+	place-content: center;
+}
+.list:after{
+	content: '';
+	
+	width: 90%;
+	height: 1px;
+	margin: 1rem auto 0;
+	background: var(--hover);
+}
+.list_item svg{
+	font-size: 1.3rem;
+}

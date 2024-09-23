@@ -1,0 +1,98 @@
+.chats{
+	position: relative;
+}
+.list_container{
+padding-top: 2rem;
+overflow: auto;
+width: 100%;
+height: calc(100vh - 9rem);
+place-items: center;
+
+}
+.list_container::-webkit-scrollbar{
+	width: 2px;
+	background: ;
+}
+.list_container::-webkit-scrollbar-thumb{
+	background: var(--hover);
+}
+.list{
+gap: .3rem;
+}
+
+.list_item{
+ gap: .5rem;
+ padding: .6rem;
+ border-radius: var(--border_rad1);
+}
+.list_item:hover{
+	background: var(--hover);
+}
+.image{
+	border-radius: 50%;
+	width: 3rem;
+	background: var(--hover);
+aspect-ratio: 1/1;
+	place-content: center;
+	overflow: hidden;
+
+}
+.text{
+	width: 100%;
+}
+.text > div{
+	justify-content: space-between;
+}
+
+.text .preview{
+	font-size: var(--font4);
+	color: var(--text2);
+}
+.name{
+	font-size: var(--font3);
+}
+.time{
+	font-size: var(--font4);
+	color:var(--accent);
+}
+.activity{
+	background: var(--accent);
+	border-radius: 20px;
+	height: 1rem;
+	padding: .2rem;
+	position: relative;
+	color: var(--text_dark);
+}
+.activity span{
+	display: grid;
+	place-content: center;
+	height: 100%;
+}
+
+/*NEWCHAT*/
+
+.newChat{
+	visibility: hidden;
+	position: absolute;
+	inset: 0;
+	transition: visibility .1s  .2s ease;
+}
+.newChat.active{
+	visibility: visible;
+
+}
+.newChat_container{
+	position: absolute;
+	left: 0;
+	bottom: 0;
+	width: 100%;
+	height: 0%;
+	border-radius: 20px 20px 0 0;
+	padding: 1rem;
+	background: var(--primary);
+	transition: height .5s ease;
+}
+.newChat.active .newChat_container{
+	height: 90%;
+
+}

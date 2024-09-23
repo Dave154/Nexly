@@ -1,0 +1,60 @@
+
+.chat{
+ height: 100%;
+ grid-template-rows: 4rem 1fr 3rem;
+ position: relative ;
+}
+.chat_top{
+	border-bottom: 1px solid var(--primary);
+ 	padding: .5rem 1rem;
+}
+.chat_top{
+
+}
+.chat_profile{
+	gap: 1rem;
+}
+.chat_container{
+	place-content: center;
+	background: var(--primary);
+}
+.chat_form{
+	overflow: hidden;
+	align-items: center;
+	border-top: 1px solid var(--primary);
+	position: relative;
+}
+.form{
+	padding-inline: .5rem;
+	gap: .4rem;
+}
+.form span{
+	cursor: pointer;
+	padding: .3rem;
+	border-radius: var(--border_rad1);
+}
+.form span:hover,
+.emoji.active{
+	background: var(--hover);
+
+}
+.form input{
+	width: 100%;
+
+}
+
+.emoji_picker aside{	
+	position: absolute;
+	bottom: -3%;
+	left: -20%;
+	transform: scale(.7);
+}
+
+
+
+@media (max-width:700px){
+	.emoji_picker aside{	
+	left: -7%;
+	
+}
+}

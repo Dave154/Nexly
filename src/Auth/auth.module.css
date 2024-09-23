@@ -1,0 +1,56 @@
+ .authentique{
+ 	place-items: center;
+ 	background: #ffffff;
+ 	height: 100vh;
+ 	color: #000;
+ }
+ .auth_container{
+ 	width: 100%;
+ 	max-width: 25rem;
+ 	padding-inline: 1rem;
+ }
+ .auth_content,.auth_form{
+ 	flex-direction: column;
+
+ }
+ .auth_content {
+ 	padding-top: 3rem;
+ 	background: #fff;
+ 	gap: 1rem;
+ }
+
+ .sign_in_with_google,.submit{
+ 	width: 	100%;
+ 	padding: 1rem;
+ 	border-radius: 25px;
+ }
+ .sign_in_with_google{
+ 	border: 1px solid green;
+ }
+.or{
+	gap: .3rem;
+}
+.or:before,
+.or:after{
+	content:'';
+	width: 3rem;
+	height: 1px;
+	background: #1c1c1c;
+}
+ .auth_form{
+width: 100%;
+gap: 1.5rem;
+ }
+ .auth_form label{
+ 	text-align: left;
+ }
+ .auth_form input{
+ 	width: 100%;
+ 	padding: 1rem;
+ 	border-radius: 15px;
+ 	border: 1px solid green;
+ 	margin-top: 10px;
+ }
+ .submit{
+ 	background: var(--accent);
+ }

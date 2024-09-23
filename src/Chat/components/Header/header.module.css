@@ -1,0 +1,57 @@
+.header {
+	position: fixed;
+	top: 0;
+	color: var(--text);
+	z-index: 99;
+
+}
+.nav{
+ padding-left: var(--padding1);
+ gap: 2rem;
+}
+.nav >div{
+	gap: 2rem;
+}
+.nav .logo{
+/*	gap: 1rem;*/
+	color: var(--accent);
+	font-family:cursive;
+}
+.logo span{
+	width: 4rem;
+}
+.connection{
+	position: relative;
+	padding-inline: 1rem;
+	gap: 1rem;
+
+}
+.connection.disabled{
+	visibility: hidden;
+}
+.connection:before{
+	content: '';
+	position: absolute;
+	left: 0;
+	top: .3rem;
+	width: 2px;
+	height: 1rem;
+	background: var(--secondary);
+	display: block;
+}
+.back svg{
+	cursor:pointer;
+	display: block;
+}
+.back.inactive svg{
+	display: none;
+}
+
+
+
+/*MEDIAQUERIES*/
+@media (min-width:700px){
+	.back{
+		display: none;
+	}
+}
