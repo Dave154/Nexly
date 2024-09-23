@@ -63,7 +63,7 @@ Follow the steps below to set up **Nexly** on your local machine.
    npm start
    ```
 
-   Your app will be available at `http://localhost:3000`.
+   Your app will be available at `http://localhost:5173`.
 
 ## How to Use
 
