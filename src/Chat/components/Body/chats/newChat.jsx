@@ -21,10 +21,11 @@ import {Skeleton} from '@mui/material'
 		 		const querySnapshot =await getDocs(q)
 		 		querySnapshot.forEach((doc)=>{
 		 			setUser(doc.data())
-		 			console.log(user)
+		 			
 		 		})
 		 	}catch(err){
-		 		console.log(err)
+
+		 		console.log(err,'err')
 		 	}
  	}
  	const handleSelect= async()=>{
@@ -56,7 +57,7 @@ import {Skeleton} from '@mui/material'
  				})
  			}
  		}catch(err){
- 			console.log(err)
+ 			console.log(err,'error')
  		}
 
  		setUser(null)

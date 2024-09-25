@@ -19,8 +19,7 @@ import {db} from '.././firebase.js'
     case 'CHANGE_USER':
       return {...state,
       user:action.payload,
-       chatId:
-    currentUser.uid > action.payload.uid ? 
+    chatId: currentUser.uid > action.payload.uid ? 
     currentUser.uid + action.payload.uid 
     : action.payload.uid + currentUser.uid
   };
@@ -36,7 +35,8 @@ import {db} from '.././firebase.js'
   const [chatForm,setChatForm]= useState([])
   const [isEmoji ,setIsEmoji] =useState(false)
   const [isNewChat,setisNewChat] =useState(false)
- 
+  const [isError,setIsError] = useState(false)
+  const [isLoading, setIsLoading]= useState(true)
       const handleSide=()=>{
         setSideOpen(!sideOpen)
       }
@@ -44,12 +44,16 @@ import {db} from '.././firebase.js'
       	setSideOpen(false)
       }
 
-
 useEffect(()=>{
           const getChats =()=>{
               const unsub = onSnapshot(doc(db, "userChats", currentUser.uid), (doc) => {
-             doc.data() &&  setChats(doc.data())
-           
+                console.log(doc.exists())
+                if(!doc.data()){
+                    setIsLoading(true)
+                }else{
+                  setIsLoading(false)
+                }
+             doc.data() && setChats(doc.data()) 
             });
 
             return ()=>unsub()
@@ -96,6 +100,8 @@ useEffect(()=>{
     isNewChat,
     setisNewChat,
     chats,
+    isError,
+    isLoading
      	}
  	}>
  		{children}

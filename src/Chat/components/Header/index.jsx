@@ -1,12 +1,15 @@
 import logo from '../../.././assets/logo_nbg.png'
 import styles from './header.module.css'
 import { CloudOffOutlined ,ArrowBack } from '@mui/icons-material';
+import {CircularProgress} from '@mui/material'
 import {useGlobe} from '../.././context.jsx'
+
 import {useNavigate,useLocation} from 'react-router-dom'
 const Header =()=>{
 	const navigate =useNavigate()
 	const location= useLocation()
-	const {sideOpen}= useGlobe()
+	const {sideOpen,isError,isLoading}= useGlobe()
+	console.log(isError)
 	return <header className={styles.header}>
 		<nav className={`${styles.nav} ${'flex'}`}>
 		<div className={`${styles.back} ${(location.pathname === '/Chat' || location.pathname === '/Chat/Calls' ||  location.pathname === '/Chat/Starred' || location.pathname === '/Chat/Profile')  && styles.inactive}`}>
@@ -19,9 +22,20 @@ const Header =()=>{
 				</span>
 				<h2>Nexly</h2>
 			</div>
-			<div className={`${styles.connection} ${sideOpen && styles.disabled} ${'flex'}`}>
+			<div className={`${styles.connection} ${(sideOpen) && styles.disabled}`}>
+				
+				{ 
+					isError && <span className={` ${'flex'}`}>
 				<CloudOffOutlined/>
-				<p>No Connection</p>
+				<p> No Connection</p>
+				</span>  
+				}
+				{
+					isLoading && <CircularProgress color='inherit' size={20}/>
+				}
+				
+				
+
 			</div>
 		</div>
 			

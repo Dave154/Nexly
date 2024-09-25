@@ -22,12 +22,8 @@ gap: .3rem;
 
 .list_item{
  gap: .5rem;
- padding: .6rem;
- border-radius: var(--border_rad1);
 }
-.list_item:hover{
-	background: var(--hover);
-}
+
 .image{
 	border-radius: 50%;
 	width: 3rem;

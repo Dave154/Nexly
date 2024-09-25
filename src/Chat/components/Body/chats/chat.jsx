@@ -9,18 +9,14 @@ import {db} from '../../../.././firebase.js'
 import Message from './message.jsx'
 import {Search,Mic ,Send,AttachFile,AddReaction} from '@mui/icons-material';
 const Chat =({id})=>{
-	const ref = useRef(null)
+	
 	const {currentUser} =useUniversal()
 	const {isEmoji, setIsEmoji,user,chatId} = useGlobe()
 	const [messages,setMessages] =useState([])
 	const [text,setText]=useState('')
 	const [img,setImg]=useState(null)
-useEffect(()=>{
-	
-},[messages])
+
 const handleSend=async(e)=>{
-	ref.current.scrollIntoView()
-	console.log(ref.current.scrollIntoView())
 	e.preventDefault()
   if(img){
 
@@ -56,6 +52,7 @@ useEffect(()=>{
  const unSub= onSnapshot(doc(db,'chats',chatId), (doc)=>{
  	doc.exists() && setMessages(doc.data().messages)
  })
+ setMessages([])
  return ()=> unSub()
 },[chatId])
 	return <div className={`${styles.chat} ${'d_grid'}`}>
@@ -68,9 +65,9 @@ useEffect(()=>{
 			</div>
 
 		</div>
-		<div className={`${styles.chat_container} ${'flex'}`} ref={ref}>
+		<div className={`${styles.chat_container} ${'flex'}`}>
 			{messages.map(message=>{
-				return <Message message={message} />
+				return <Message message={message}  key={message.id}/>
 			})}
 		
 		</div>

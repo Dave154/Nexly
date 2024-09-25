@@ -13,7 +13,6 @@ const Chats =()=>{
 		const [search,setSearch]= useState('')
 		 const handleSearch=(e)=>{
 		 	e.preventDefault()
-		 	console.log(chats)
 		 }
 	const navigate=useNavigate()
 	return <article className={styles.chats}>

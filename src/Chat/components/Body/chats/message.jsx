@@ -4,7 +4,6 @@ import {useRef,useEffect} from 'react'
  const Message =({message})=>{
 	const {currentUser} =useUniversal()
 	const ref = useRef(null)
-	console.log(currentUser)
 	useEffect(()=>{
 	ref.current?.scrollIntoView({behavior:'smooth'})
 },[message])

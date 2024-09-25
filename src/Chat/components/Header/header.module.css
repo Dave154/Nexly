@@ -23,8 +23,10 @@
 .connection{
 	position: relative;
 	padding-inline: 1rem;
+}
+.connection span {
 	gap: 1rem;
-
+	
 }
 .connection.disabled{
 	visibility: hidden;
