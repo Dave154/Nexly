@@ -1,6 +1,6 @@
 import styles from './chat.module.css'
 import {ChatProvider} from './context.jsx'
-import Side from './components/miniDrawer'
+import Side from './components/minidrawer'
 import Header from './components/Header'
 import Body from './components/Body'
  import Grid from '@mui/material/Grid'
