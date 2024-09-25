@@ -8,7 +8,7 @@ import Starred from './Chat/components/Body/starred'
 import Profile from './Chat/components/Body/profile'
 import { auth } from "./firebase";
 import {Routes,Route,Navigate} from 'react-router-dom'
-import Sub from './Chat/components/body/sub.jsx'
+import Sub from './Chat/components/Body/sub.jsx'
 import {useUniversal} from './context.jsx'
 const chatRoutes=[
       {
