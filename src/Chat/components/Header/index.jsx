@@ -9,7 +9,6 @@ const Header =()=>{
 	const navigate =useNavigate()
 	const location= useLocation()
 	const {sideOpen,isError,isLoading}= useGlobe()
-	console.log(isError)
 	return <header className={styles.header}>
 		<nav className={`${styles.nav} ${'flex'}`}>
 		<div className={`${styles.back} ${(location.pathname === '/Chat' || location.pathname === '/Chat/Calls' ||  location.pathname === '/Chat/Starred' || location.pathname === '/Chat/Profile')  && styles.inactive}`}>
