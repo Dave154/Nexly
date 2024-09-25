@@ -5,12 +5,15 @@ import {signInWithEmailAndPassword ,} from "firebase/auth";
 import {ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
 import { doc, setDoc } from "firebase/firestore"; 
 import Auth from './Auth.jsx'
-
+import {useState} from 'react'
 
 
 const Login =()=>{
 	const navigate =useNavigate()
+	const [loading, setLoading]= useState(false)
+	const [error,setError]=useState('')
 		const handleSubmit= async(e)=>{
+			setLoading(true)
 			e.preventDefault()
 			const name = e.target[0].value
 			const email = e.target[0].value
@@ -21,9 +24,13 @@ const Login =()=>{
 				const response = await signInWithEmailAndPassword(auth, email, password)
 				console.log(response.user)
 				navigate('/chat')
+				setLoading(false)
 				
 			}catch(error){
-				console.log(error)
+				setLoading(false)
+				  setError(error.code)
+				  alert(error.code)
+				console.log(error.code,'error')
 			}
 
 		}
@@ -31,6 +38,8 @@ const Login =()=>{
 		type='in'
 		Func={handleSubmit}
 		opp='Register'
+		loading={loading}
+		error={error}
 	/>
 }
 export default Login

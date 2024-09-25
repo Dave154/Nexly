@@ -17,7 +17,7 @@ import {Skeleton} from '@mui/material'
 		 	e.preventDefault()
 		 	setUserName(e.target[0].value)
 		 	try {
-		 		const q = await query(collection(db,'users'),where('displayName',"==",username))
+		 		const q = await query(collection(db,'users'),where('displayName',"==",username.toLowerCase()))
 		 		const querySnapshot =await getDocs(q)
 		 		querySnapshot.forEach((doc)=>{
 		 			setUser(doc.data())
@@ -27,7 +27,7 @@ import {Skeleton} from '@mui/material'
 
 		 		console.log(err,'err')
 		 	}
-		 	
+
  	}
  	const handleSelect= async()=>{
  		// check if chat exist

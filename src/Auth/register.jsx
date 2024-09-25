@@ -6,12 +6,17 @@ import { doc, setDoc } from "firebase/firestore";
 import {useGlobe} from './context.jsx'
 import styles from './auth.module.css'
 import Auth from './Auth.jsx'
+import {useState} from 'react'
 
 
 
 const Register =()=>{
+	const navigate=useNavigate()
+	const [loading, setLoading]= useState(false)
+	const [error,setError]=useState('')
 	const handleSubmit= async(e)=>{
 			e.preventDefault()
+			setLoading(true)
 			const displayName = e.target[0].value
 			const email = e.target[1].value
 			const password = e.target[2].value
@@ -29,10 +34,14 @@ const Register =()=>{
 				  		
 				});
 				    await setDoc(doc (db,'userChats',response.user.uid),{})
-
-					console.log(response.user) 
+				    console.log(response)
+				    setLoading(false)
+				    navigate('/login')
 			}catch(error){
-				console.log(error,'error')
+				  setLoading(false)
+				  setError(error.code)
+				  alert(error.code)
+				console.log(error.code,'error')
 			}
 
  
@@ -41,6 +50,8 @@ const Register =()=>{
 		type='up'
 		Func={handleSubmit}
 		opp='Login'
+		loading={loading}
+		error={error}
 	/>
    } 
  export default Register
