@@ -1,6 +1,7 @@
 import './App.css'
 import {useState,useEffect} from 'react'
 import Chat from './Chat'
+import Landing from './Landing'
 import Login from './Auth/login.jsx'
 import Register from './Auth/register.jsx'
 import Chats from './Chat/components/Body/chats'
@@ -49,6 +50,7 @@ const App=()=> {
    }
 
   return <Routes>
+    <Route path ='/' element={<Landing/>}/>
     <Route path='/Chat' element={ <ProtectedRoute>
     <Chat/>
     </ProtectedRoute>}>

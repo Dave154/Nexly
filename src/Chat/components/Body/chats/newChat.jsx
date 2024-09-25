@@ -11,11 +11,11 @@ import {Skeleton} from '@mui/material'
  const NewChat =()=>{
  	const {isNewChat, setisNewChat}=useGlobe()
  	const {currentUser} =useUniversal()
- 	// const [username,setUserName]= useState('')
+ 	const [username,setUserName]= useState('')
  	  const [user,setUser]= useState(null)
  	 const handleSearch= async(e)=>{
 		 	e.preventDefault()
-		 	const username = e.target[0].value
+		 	setUserName(e.target[0].value)
 		 	try {
 		 		const q = await query(collection(db,'users'),where('displayName',"==",username))
 		 		const querySnapshot =await getDocs(q)
@@ -27,6 +27,7 @@ import {Skeleton} from '@mui/material'
 
 		 		console.log(err,'err')
 		 	}
+		 	
  	}
  	const handleSelect= async()=>{
  		// check if chat exist
@@ -59,7 +60,7 @@ import {Skeleton} from '@mui/material'
  		}catch(err){
  			console.log(err,'error')
  		}
-
+ 		setUserName('')
  		setUser(null)
  		 setisNewChat(false)
  	}
@@ -67,8 +68,8 @@ import {Skeleton} from '@mui/material'
  	 <div className={styles.newChat_container}>
  	 	<Title text='New chat' button={[]}/>
  		<Search placeholder='Search User' 
- 		 // value={username} 
- 		 // valuefunc={setUserName}
+ 		 value={username} 
+ 		 valuefunc={(e)=>setUserName(e.target.value)}
  		 submit={handleSearch}
  		 />
 		{

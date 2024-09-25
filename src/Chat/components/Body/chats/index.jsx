@@ -3,17 +3,20 @@ import SearchBar from '../search.jsx'
 import styles from './chats.module.css'
 import NewChat from './newChat.jsx'
 import {Skeleton} from '@mui/material'
-import { EditOutlined, FilterListOutlined} from '@mui/icons-material';
+import { EditOutlined, FilterListOutlined,PersonOutlined} from '@mui/icons-material';
 import {useNavigate} from 'react-router-dom'
 import {useGlobe} from '../../../context.jsx'
 import {useState} from 'react'
-
 const Chats =()=>{
 	const {setSubOpen,isNewChat,setisNewChat,chats,handleSelect}= useGlobe()
 		const [search,setSearch]= useState('')
 		 const handleSearch=(e)=>{
 		 	e.preventDefault()
+		 	setSearch(e.target.value)
+	
 		 }
+		 	console.log(search)
+
 	const navigate=useNavigate()
 	return <article className={styles.chats}>
 		<Title 
@@ -22,17 +25,23 @@ const Chats =()=>{
 		/>
 		<SearchBar
 		placeholder='Search'
-		// value={search} 
- 		// valuefunc={setSearch}
+		value={search} 
+ 		valuefunc={handleSearch}
  		submit={handleSearch}
 
 		/>
 		<div className={styles.list_container}>
 			<ul className={`${styles.list} ${'d_grid'}`}>
 				{ 
-					Object.entries(chats)?.sort((a,b)=>b[1].date-a[1].date).map(item=>{
+					Object.entries(chats).filter((item)=>{
+						if(search !== ''){
+						return item[1].userInfo.displayName.toLowerCase().includes(search)
+						}else{
+							return item
+						}
+					} )?.sort((a,b)=>b[1].date-a[1].date).map(item=>{
 						const id=item[0]
-						const image =item[0]
+						const image =''
 						const name = item[1].userInfo.displayName
 						const preview=item[1].lastMessage?.text
 						const timeStamp=''
@@ -42,7 +51,7 @@ const Chats =()=>{
 							handleSelect(item[1].userInfo)
 						}}>
 							<div className={`${styles.image} ${'d_grid'}`}>
-								{image ? <img src={image} alt={name}/>: <Skeleton  variant='circular' width={'3rem'} height={'3rem'} />}
+								{image ? <img src={image} alt={name}/>: <PersonOutlined/>}
 
 							</div>
 							<div className={styles.text}>

@@ -6,12 +6,8 @@ const SearchBar =({placeholder,submit,value,valuefunc})=>{
 		<Search/>
 		<input type="search" 
 		placeholder={placeholder}
-	// 	 value={value} 
-	// 	 onChange={(e)=> {
-	// 		valuefunc(e.target.value)
-	// 		console.log(e.target.value)
-	// 	}
-	// }
+		 value={value} 
+		 onChange={	valuefunc}
 	/>
 	</form>
 }

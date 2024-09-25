@@ -9,7 +9,7 @@ const topList = [
       id:0,
       icon: <Chat/>,
       txt:'Chats',
-      route:''
+      route: '',
     },
     {
       id:1,
@@ -65,7 +65,7 @@ const Side =()=>{
         {
           topList.map((item)=>{
         const {id,icon,txt,route} = item;
-        return <li key={id} className ={`${styles.list_item} ${location.pathname === `/Chat/${route}` && styles.active}`} onClick={()=>{
+        return <li key={id} className ={`${styles.list_item} ${(location.pathname === `/chat/${route}`) && styles.active}`} onClick={()=>{
           navigate(route)
           closeSide()
         }}> 
@@ -89,7 +89,7 @@ const Side =()=>{
           midList.map((item)=>{
         const {id,icon,txt,route} = item;
 
-        return <li key={id} className ={`${styles.list_item} ${location.pathname === `/Chat/${route}` && styles.active}`} onClick={()=>{
+        return <li key={id} className ={`${styles.list_item} ${location.pathname === `/chat/${route}` && styles.active}`} onClick={()=>{
           navigate(route)
           closeSide()
         }}> 
@@ -110,7 +110,7 @@ const Side =()=>{
           bottomList.map((item)=>{
         const {id,icon,txt,route} = item;
 
-        return <li key={id} className ={`${styles.list_item} ${location.pathname === `/Chat/${route}` && styles.active}`} onClick={()=>{
+        return <li key={id} className ={`${styles.list_item} ${location.pathname === `/chat/${route}` && styles.active}`} onClick={()=>{
           navigate(route)
           closeSide()
         }}> 

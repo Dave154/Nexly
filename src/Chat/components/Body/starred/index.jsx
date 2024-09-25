@@ -4,69 +4,6 @@ import styles from '../chats/chats.module.css'
 import {Skeleton} from '@mui/material'
 import {useNavigate,Outlet} from 'react-router-dom'
 const list = [
-	{	
-		id:'1',
-		image:'',
-		name:'',
-		preview:'',
-		timeStamp:' 7:10',
-	},
-	{	
-		id:'2',
-		image:'',
-		name:'',
-		preview:'',
-		timeStamp:' 7:10',
-	},
-	{	
-		id:'3',
-		image:'',
-		name:'',
-		preview:'',
-		timeStamp:' 7:10',
-	},
-	{	
-		id:'4',
-		image:'',
-		name:'',
-		preview:'',
-		timeStamp:' 7:10',
-	},
-	{	
-		id:'5',
-		image:'',
-		name:'',
-		preview:'',
-		timeStamp:' 7:10',
-	},
-	{	
-		id:'6',
-		image:'',
-		name:'',
-		preview:'',
-		timeStamp:' 7:10',
-	},
-	{	
-		id:'7',
-		image:'',
-		name:'',
-		preview:'',
-		timeStamp:' 7:10',
-	},
-	{	
-		id:'8',
-		image:'',
-		name:'',
-		preview:'',
-		timeStamp:' 7:10',
-	},
-	{	
-		id:'9',
-		image:'',
-		name:'',
-		preview:'',
-		timeStamp:' 7:10',
-	},
 
 
 	]

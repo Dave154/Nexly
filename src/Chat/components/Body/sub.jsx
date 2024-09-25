@@ -5,7 +5,7 @@ import {Outlet,useParams} from 'react-router-dom'
 const Sub =()=>{
 	const {id}=useParams()
 	return <div className={styles.sub_container}>
-	  <Chat id={id}/>
+	  <Chat/>
 	</div>
 }
 export default Sub

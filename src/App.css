@@ -67,3 +67,16 @@ body{
   background: var(--hover);
 }
 
+.landing{
+  display: grid;
+  place-content: center;
+  height: 100vh;
+  gap: 1rem;
+}
+.landing button{
+  background: var(--accent);
+  padding: 1rem;
+  border-radius: 30px;
+  color: inherit;
+  justify-content: center;
+}

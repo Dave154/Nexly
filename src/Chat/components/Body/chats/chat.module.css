@@ -14,6 +14,14 @@
 .chat_profile{
 	gap: 1rem;
 }
+.image{
+	border-radius: 50%;
+	width: 3rem;
+	background: var(--hover);
+aspect-ratio: 1/1;
+	place-content: center;
+	overflow: hidden;
+}
 .chat_container{
 	flex-direction: column;
 	align-items: flex-start;
@@ -21,6 +29,7 @@
 	gap: 1rem;
 	overflow: auto;
 	padding: 0 1rem;
+	position: relative;
 }
 .chat_container::-webkit-scrollbar{
 	width: 1px;
@@ -71,7 +80,7 @@ position: relative;
   content: '';
   position: absolute;
   top: 0;  
-  left: -.5rem;
+  left: -.4rem;
   border-top: 0rem solid transparent;
   border-right: .8rem solid var(--secondary);
   border-bottom: .5rem solid transparent;
@@ -80,10 +89,8 @@ position: relative;
 .message_box.currentUser:before{
 	left: initial;
 	right: -.4rem;
-	 border-top: 0rem solid transparent;
   border-left: .8rem solid var(--accent);
-  border-bottom: .5rem solid transparent;
-  border-right: 0;
+  border-right: initial;
 }
 .currentUser{
 	background: var(--accent);
@@ -97,6 +104,13 @@ position: relative;
 }
 .send_msg{
 	color: var(--accent) !important	;
+}
+.loading{
+	position: absolute;
+	background: rgba(0, 0, 0, .2);
+	inset: 0;
+	place-content: center;
+
 }
 @media (max-width:700px){
 	.emoji_picker aside{	

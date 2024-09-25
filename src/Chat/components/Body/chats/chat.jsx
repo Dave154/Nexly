@@ -7,14 +7,16 @@ import {useState,useEffect,useRef} from 'react'
 import { doc, onSnapshot ,updateDoc,Timestamp,arrayUnion,serverTimestamp} from "firebase/firestore";
 import {db} from '../../../.././firebase.js'
 import Message from './message.jsx'
-import {Search,Mic ,Send,AttachFile,AddReaction} from '@mui/icons-material';
-const Chat =({id})=>{
+import {Search,Mic ,Send,AttachFile,AddReaction,PersonOutlined} from '@mui/icons-material';
+import {CircularProgress} from '@mui/material'
+const Chat =()=>{
 	
 	const {currentUser} =useUniversal()
 	const {isEmoji, setIsEmoji,user,chatId} = useGlobe()
-	const [messages,setMessages] =useState([])
+	const [messages,setMessages] =useState([''])
 	const [text,setText]=useState('')
 	const [img,setImg]=useState(null)
+	// const [loader,setLoader]=useState(null)
 
 const handleSend=async(e)=>{
 	e.preventDefault()
@@ -24,7 +26,7 @@ const handleSend=async(e)=>{
   }else if(text !== ''){
   			await updateDoc(doc(db,'chats',chatId),{
   				messages: arrayUnion({
-  					id: new Date().getTime().toString(),
+  					id: Math.random(new Date().getTime().toString()),
   					text,
   					senderId:currentUser.uid,
   					date:Timestamp.now()
@@ -59,7 +61,7 @@ useEffect(()=>{
 		<div className={`${styles.chat_top} ${'flex'}`}>
 			<div className={`${styles.chat_profile} ${'flex'}`}>
 				<div className={`${styles.image} ${'d_grid'}`}>
-					{false ? <img src='' alt=''/>: <Skeleton  variant='circular' width={'3rem'} height={'3rem'} />}
+					{false ? <img src='' alt=''/>: <PersonOutlined/>}
 				</div>
 					{ user.displayName ? <h5 className={styles.name}>  {user.displayName}</h5> :<Skeleton  width={'5rem'}/> }
 			</div>
@@ -67,9 +69,13 @@ useEffect(()=>{
 		</div>
 		<div className={`${styles.chat_container} ${'flex'}`}>
 			{messages.map(message=>{
-				return <Message message={message}  key={message.id}/>
-			})}
-		
+				if(messages.length=== 0){
+						return <p>No message in this Chat</p>
+				}else{
+
+				return <Message message={message} key={message.id}/>
+				}
+			})} 
 		</div>
 		<div className={`${styles.chat_form} ${'d_grid'}`}>
 			<form action="" className={`${styles.form} ${'flex'}`} onSubmit={handleSend}>
