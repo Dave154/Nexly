@@ -1,35 +1,73 @@
- import React, {useState ,useContext,useEffect} from 'react'
+ import React, {useState ,useContext,useEffect,useReducer} from 'react'
+import { doc, onSnapshot } from "firebase/firestore";
+import {useUniversal} from '.././context.jsx'
+import {db} from '.././firebase.js'
 
 
  const ChatContext = React.createContext()
-
-
  const ChatProvider =({children}) =>{
+  const {currentUser} =useUniversal()
 
+
+ const initialState= {
+    chatId:'null',
+    user:{}
+  }
+
+  const chatReducer=(state,action)=>{
+    switch (action.type){
+    case 'CHANGE_USER':
+      return {...state,
+      user:action.payload,
+       chatId:
+    currentUser.uid > action.payload.uid ? 
+    currentUser.uid + action.payload.uid 
+    : action.payload.uid + currentUser.uid
+  };
+
+    default: return state
+    }
+  }
+
+  const [state,dispatch]=useReducer(chatReducer,initialState)
+  const [chats,setChats]=useState({})
   const [sideOpen,setSideOpen] = useState(false)
   const [subOpen,setSubOpen]=useState(false)
   const [chatForm,setChatForm]= useState([])
   const [isEmoji ,setIsEmoji] =useState(false)
   const [isNewChat,setisNewChat] =useState(false)
-  const handleSide=()=>{
-    setSideOpen(!sideOpen)
-  }
-  const closeSide =()=>{
-  	setSideOpen(false)
-  }
+ 
+      const handleSide=()=>{
+        setSideOpen(!sideOpen)
+      }
+      const closeSide =()=>{
+      	setSideOpen(false)
+      }
 
-  useEffect(()=>{
+
+useEffect(()=>{
+          const getChats =()=>{
+              const unsub = onSnapshot(doc(db, "userChats", currentUser.uid), (doc) => {
+             doc.data() &&  setChats(doc.data())
+           
+            });
+
+            return ()=>unsub()
+    }
+          currentUser.uid && getChats()
+},[currentUser.uid])
+
+useEffect(()=>{
     const close = (e)=>{
       if(sideOpen && e.x > 185){
         closeSide()
       }
-     
     }
-  	document.addEventListener('click', close)
-    return ()=>{
-        document.removeEventListener('click', close)
-    }
-  },[sideOpen])
+	 document.addEventListener('click', close)
+  return ()=>{
+      document.removeEventListener('click', close)
+  }
+},[sideOpen])
 
 useEffect(()=>{
   const close =(e)=>{
@@ -41,8 +79,13 @@ useEffect(()=>{
    return ()=>  document.removeEventListener('click', close)
 },[isNewChat])
 
+  const handleSelect =(user)=>{
+    dispatch({type:'CHANGE_USER',payload:user})
+  }
  	return <ChatContext.Provider value={
  		{
+      ...state,
+    handleSelect,
  		sideOpen,
  		handleSide,
  		closeSide,
@@ -51,7 +94,8 @@ useEffect(()=>{
     isEmoji,
     setIsEmoji,
     isNewChat,
-    setisNewChat
+    setisNewChat,
+    chats,
      	}
  	}>
  		{children}

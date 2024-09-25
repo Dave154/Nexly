@@ -7,6 +7,7 @@
  	height: calc(100vh - 3rem);
  	border-radius: var(--border_rad1);
  	grid-template-columns: 1fr 1fr;
+ 	overflow:hidden;
  }
  .body section{
  	border: 1px solid var(--primary);

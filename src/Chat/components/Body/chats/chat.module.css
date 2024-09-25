@@ -1,7 +1,7 @@
 
 .chat{
  height: 100%;
- grid-template-rows: 4rem 1fr 3rem;
+ grid-template-rows: 4rem calc(100vh - 10rem) 3rem;
  position: relative ;
 }
 .chat_top{
@@ -15,8 +15,19 @@
 	gap: 1rem;
 }
 .chat_container{
-	place-content: center;
+	flex-direction: column;
+	align-items: flex-start;
 	background: var(--primary);
+	gap: 1rem;
+	overflow: auto;
+	padding: 0 1rem;
+}
+.chat_container::-webkit-scrollbar{
+	width: 1px;
+}
+.chat_container::-webkit-scrollbar-thumb{
+	border-radius: 30px;
+	background: var(--accent);
 }
 .chat_form{
 	overflow: hidden;
@@ -49,12 +60,46 @@
 	left: -20%;
 	transform: scale(.7);
 }
-
-
-
+.message_box{
+ background: var(--secondary);
+ border-radius:5px;
+ padding: .3rem;
+ max-width: 70%;
+position: relative;
+}
+.message_box:before{
+  content: '';
+  position: absolute;
+  top: 0;  
+  left: -.5rem;
+  border-top: 0rem solid transparent;
+  border-right: .8rem solid var(--secondary);
+  border-bottom: .5rem solid transparent;
+  border-radius: 10px;
+}
+.message_box.currentUser:before{
+	left: initial;
+	right: -.4rem;
+	 border-top: 0rem solid transparent;
+  border-left: .8rem solid var(--accent);
+  border-bottom: .5rem solid transparent;
+  border-right: 0;
+}
+.currentUser{
+	background: var(--accent);
+  align-self: flex-end;
+}
+.attach{
+	position: relative;
+}
+.attach input{
+	display: none;
+}
+.send_msg{
+	color: var(--accent) !important	;
+}
 @media (max-width:700px){
 	.emoji_picker aside{	
-	left: -7%;
-	
+	left: -7%;	
 }
 }

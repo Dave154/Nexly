@@ -15,23 +15,11 @@ const Register =()=>{
 			const displayName = e.target[0].value
 			const email = e.target[1].value
 			const password = e.target[2].value
-			const profile_photo= e.target[3].value
 			try{
 				const response = await createUserWithEmailAndPassword(auth, email, password)
 				const storageRef = ref(storage, displayName);
-				const uploadTask = uploadBytesResumable(storageRef, profile_photo);
-				uploadTask.on(
-
-				  (error) => {
-				    setError(true)
-				    console.log(error)
-				  }, 
-				  () => {
-				    getDownloadURL(uploadTask.snapshot.ref).then(async(downloadURL) => {
 				     await updateProfile(response.user,{
 				     	displayName,
-				     	photoURL:downloadURL
-				     
 				     })
 				     	
 				    await setDoc(doc (db, "users", response.user.uid), {
@@ -40,10 +28,7 @@ const Register =()=>{
 				  		 email,
 				  		
 				});
-				    await setDoc(doc (db,' userChats',response.user.uid),{})
-				    });
-				  }
-				);
+				    await setDoc(doc (db,'userChats',response.user.uid),{})
 
 					console.log(response.user) 
 			}catch(error){

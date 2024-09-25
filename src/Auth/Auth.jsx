@@ -33,12 +33,6 @@ const Auth =({type,Func,opp})=>{
 		 	Password:
 		 	<input type="password" placeholder='Enter Passcode'  autoComplete="current-password"/>
 		 </label>
-		 {
-		 	type === 'up' &&  <label htmlFor="">
-		 	Profile:
-		 	<input type="file" placeholder='Enter Passcode'/>
-		 </label>
-		 }
 		 
 		 	{/*<input type='file'/>*/}
 		 	<button type='submit ' className={styles.submit}>Sign {type}</button>

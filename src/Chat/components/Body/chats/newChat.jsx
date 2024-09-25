@@ -5,15 +5,14 @@ import Search from '.././search.jsx'
 import Title from '.././title.jsx'
 import {useState} from 'react'
 import {db} from '../../../.././firebase.js'
-import {collection,query,where,getDocs} from 'firebase/firestore'
+import {collection,query,where,getDocs,getDoc,setDoc,doc, updateDoc, serverTimestamp} from 'firebase/firestore'
 import {Skeleton} from '@mui/material'
 
  const NewChat =()=>{
- 	const {isNewChat}=useGlobe()
+ 	const {isNewChat, setisNewChat}=useGlobe()
  	const {currentUser} =useUniversal()
  	// const [username,setUserName]= useState('')
- 	const [user,setUser]= useState(null)
-
+ 	  const [user,setUser]= useState(null)
  	 const handleSearch= async(e)=>{
 		 	e.preventDefault()
 		 	const username = e.target[0].value
@@ -22,6 +21,7 @@ import {Skeleton} from '@mui/material'
 		 		const querySnapshot =await getDocs(q)
 		 		querySnapshot.forEach((doc)=>{
 		 			setUser(doc.data())
+		 			console.log(user)
 		 		})
 		 	}catch(err){
 		 		console.log(err)
@@ -31,18 +31,37 @@ import {Skeleton} from '@mui/material'
  		// check if chat exist
  		// create if not
  		try {
- 		const combinedId= currentUser.uid > user.uid ? currentUser.uid + user.uid : user.uid + currentUser.uid
- 		const res = await getDocs(db('chats', currentId))
- 			if(!res.exist()){
- 				// create
+ 		const combinedId= currentUser.uid > user.uid ? 
+ 		currentUser.uid + user.uid 
+ 		: user.uid + currentUser.uid;
+ 		const res = await getDoc(doc(db,'chats', combinedId))
+
+ 			if(!res.exists()){
+ 			// create a chat in chats collection 
  				await setDoc(doc(db,'chats',combinedId),{messages:[]})
+ 			// create user chats
+ 				await updateDoc(doc(db,'userChats',currentUser.uid),{
+ 					 [combinedId+".userInfo"]: {
+ 					 	uid:user.uid,
+ 						displayName: user.displayName,
+ 					 },
+ 					 [combinedId +'.date']: serverTimestamp()
+ 				})
+ 					await updateDoc(doc(db,'userChats',user.uid),{
+ 					 [combinedId + '.userInfo']: {
+ 					 	uid: currentUser.uid,
+ 						displayName: currentUser.displayName,
+ 					 },
+ 					 [combinedId + '.date']: serverTimestamp()
+ 				})
  			}
  		}catch(err){
-
+ 			console.log(err)
  		}
- 		
- 	}
 
+ 		setUser(null)
+ 		 setisNewChat(false)
+ 	}
  	return <article className={`${styles.newChat} ${isNewChat && styles.active}`} id='NewChat'>
  	 <div className={styles.newChat_container}>
  	 	<Title text='New chat' button={[]}/>

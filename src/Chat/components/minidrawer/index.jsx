@@ -65,7 +65,6 @@ const Side =()=>{
         {
           topList.map((item)=>{
         const {id,icon,txt,route} = item;
-        console.log(route)
         return <li key={id} className ={`${styles.list_item} ${location.pathname === `/Chat/${route}` && styles.active}`} onClick={()=>{
           navigate(route)
           closeSide()

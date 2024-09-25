@@ -11,13 +11,13 @@ import {getStorage} from 'firebase/storage'
 // Your web app's Firebase configuration
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
-  apiKey: "AIzaSyCuHTzgThOQjfecTi6Jb30uiRe-bXXkfJk",
-  authDomain: "nexly-695cf.firebaseapp.com",
-  projectId: "nexly-695cf",
-  storageBucket: "nexly-695cf.appspot.com",
-  messagingSenderId: "620874900423",
-  appId: "1:620874900423:web:12d46a96b4355ed93eefe2",
-  measurementId: "G-3K5NPDVKE8"
+    apiKey: "AIzaSyDqO2H16ElI7o5C7I7ZX0U0X7gBHr2c_-E",
+  authDomain: "nexly-d5c6d.firebaseapp.com",
+  projectId: "nexly-d5c6d",
+  storageBucket: "nexly-d5c6d.appspot.com",
+  messagingSenderId: "735205454419",
+  appId: "1:735205454419:web:a45f13010b4cb091dd0ca6",
+  measurementId: "G-G187Q0EP0W"
 };
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);

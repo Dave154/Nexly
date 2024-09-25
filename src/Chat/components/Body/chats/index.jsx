@@ -7,80 +7,13 @@ import { EditOutlined, FilterListOutlined} from '@mui/icons-material';
 import {useNavigate} from 'react-router-dom'
 import {useGlobe} from '../../../context.jsx'
 import {useState} from 'react'
-const list = [
-	{	
-		id:'1',
-		image:'',
-		name:'',
-		preview:'',
-		timeStamp:' 7:10AM',
-	},
-	{	
-		id:'2',
-		image:'',
-		name:'',
-		preview:'',
-		timeStamp:' 7:10AM',
-	},
-	{	
-		id:'3',
-		image:'',
-		name:'',
-		preview:'',
-		timeStamp:' 7:10AM',
-	},
-	{	
-		id:'4',
-		image:'',
-		name:'',
-		preview:'',
-		timeStamp:' 7:10AM',
-	},
-	{	
-		id:'5',
-		image:'',
-		name:'',
-		preview:'',
-		timeStamp:' 7:10AM',
-	},
-	{	
-		id:'6',
-		image:'',
-		name:'',
-		preview:'',
-		timeStamp:' 7:10AM',
-	},
-	{	
-		id:'7',
-		image:'',
-		name:'',
-		preview:'',
-		timeStamp:' 7:10AM',
-	},
-	{	
-		id:'8',
-		image:'',
-		name:'',
-		preview:'',
-		timeStamp:' 7:10AM',
-	},
-	{	
-		id:'9',
-		image:'',
-		name:'',
-		preview:'',
-		timeStamp:' 7:10AM',
-	},
-
-
-	]
 
 const Chats =()=>{
-	const {setSubOpen,isNewChat,setisNewChat}= useGlobe()
+	const {setSubOpen,isNewChat,setisNewChat,chats,handleSelect}= useGlobe()
 		const [search,setSearch]= useState('')
 		 const handleSearch=(e)=>{
 		 	e.preventDefault()
-		 	console.log(e.target[0].value)
+		 	console.log(chats)
 		 }
 	const navigate=useNavigate()
 	return <article className={styles.chats}>
@@ -90,19 +23,24 @@ const Chats =()=>{
 		/>
 		<SearchBar
 		placeholder='Search'
-		value={search} 
- 		valuefunc={setSearch}
+		// value={search} 
+ 		// valuefunc={setSearch}
  		submit={handleSearch}
 
 		/>
 		<div className={styles.list_container}>
 			<ul className={`${styles.list} ${'d_grid'}`}>
 				{ 
-					list.map(item=>{
-						const {id,image,name,preview,timeStamp}=item
+					Object.entries(chats)?.sort((a,b)=>b[1].date-a[1].date).map(item=>{
+						const id=item[0]
+						const image =item[0]
+						const name = item[1].userInfo.displayName
+						const preview=item[1].lastMessage?.text
+						const timeStamp=''
 						return <li className={`${styles.list_item} ${'flex'} ${'clickable'}`} key={id} onClick={()=>{
 							navigate(`${id}`)
 							setSubOpen(true)
+							handleSelect(item[1].userInfo)
 						}}>
 							<div className={`${styles.image} ${'d_grid'}`}>
 								{image ? <img src={image} alt={name}/>: <Skeleton  variant='circular' width={'3rem'} height={'3rem'} />}
