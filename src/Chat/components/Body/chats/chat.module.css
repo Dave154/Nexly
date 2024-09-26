@@ -1,16 +1,14 @@
 
 .chat{
  height: 100%;
- grid-template-rows: 4rem calc(100vh - 10rem) 3rem;
- position: relative ;
+ position: relative;;
 }
 .chat_top{
-	border-bottom: 1px solid var(--primary);
+	border-bottom: 1px solid var(--accent);
  	padding: .5rem 1rem;
+ 	height: 4rem;
 }
-.chat_top{
 
-}
 .chat_profile{
 	gap: 1rem;
 }
@@ -30,6 +28,7 @@ aspect-ratio: 1/1;
 	overflow: auto;
 	padding: 0 1rem;
 	position: relative;
+	height: calc(100vh - 7rem);
 }
 .chat_container::-webkit-scrollbar{
 	width: 1px;
@@ -40,9 +39,12 @@ aspect-ratio: 1/1;
 }
 .chat_form{
 	overflow: hidden;
-	align-items: center;
-	border-top: 1px solid var(--primary);
+	align-items: flex-end;
+	border-top: 1px solid var(--accent);
 	position: relative;
+	width: 100%;
+	left: 0;
+	bottom: 0;;
 }
 .form{
 	padding-inline: .5rem;
@@ -58,9 +60,11 @@ aspect-ratio: 1/1;
 	background: var(--hover);
 
 }
-.form input{
-	width: 100%;
-
+.form .chatInput > div{
+	color: var(--txt);
+}
+.form .chatInput > div::before{
+	display: none;
 }
 
 .emoji_picker aside{	

@@ -7,12 +7,13 @@ import {useState,useEffect,useRef} from 'react'
 import { doc, onSnapshot ,updateDoc,Timestamp,arrayUnion,serverTimestamp} from "firebase/firestore";
 import {db} from '../../../.././firebase.js'
 import Message from './message.jsx'
-import {Search,Mic ,Send,AttachFile,AddReaction,PersonOutlined} from '@mui/icons-material';
-import {CircularProgress} from '@mui/material'
+import {Search,Mic ,Send,AttachFile,AddReaction,PersonOutlined,ArrowBack} from '@mui/icons-material';
+import {CircularProgress,TextField} from '@mui/material'
+import {useNavigate} from 'react-router-dom'
 const Chat =()=>{
-	
+	const navigate=useNavigate()
 	const {currentUser} =useUniversal()
-	const {isEmoji, setIsEmoji,user,chatId} = useGlobe()
+	const {isEmoji, setIsEmoji,user,chatId,setSubOpen} = useGlobe()
 	const [messages,setMessages] =useState([''])
 	const [text,setText]=useState('')
 	const [img,setImg]=useState(null)
@@ -60,6 +61,10 @@ useEffect(()=>{
 	return <div className={`${styles.chat} ${'d_grid'}`}>
 		<div className={`${styles.chat_top} ${'flex'}`}>
 			<div className={`${styles.chat_profile} ${'flex'}`}>
+				<ArrowBack onClick={()=> {
+					navigate('/chat')
+					setSubOpen(false)
+				}  }/>
 				<div className={`${styles.image} ${'d_grid'}`}>
 					{false ? <img src='' alt=''/>: <PersonOutlined/>}
 				</div>
@@ -90,7 +95,18 @@ useEffect(()=>{
 					<AttachFile/>
 					<input id='file' type="file" onChange={(e)=>setImg(e.target.value)}/>
 				</label>
-				<input type="text" placeholder='Type in Your Message'  value ={text} onChange={(e)=>{setText(e.target.value)}}/>
+				 <TextField
+				 className={styles.chatInput}
+          id="outlined-multiline-flexible"
+          placeholder='Type in Your Message'
+          multiline
+          maxRows={1}
+         	variant="standard"
+          fullWidth 
+          value ={text}
+          className={styles.chatInput}
+          onChange={(e)=>{setText(e.target.value)}}/>
+				{/*<input type="text" placeholder=''  value ={text} onChange={(e)=>{setText(e.target.value)}}/>*/}
 				<span className= {`${'clickable'}`}>
 					{ text.length > 0 ?  <button type='submit' className={styles.send_msg}>	<Send/> </button>: <Mic/>}
 				</span>

@@ -2,7 +2,8 @@
 	position: fixed;
 	top: 0;
 	color: var(--text);
-	z-index: 99;
+	z-index: 999;
+	width: 100%;
 
 }
 .nav{
@@ -15,14 +16,13 @@
 .nav .logo{
 /*	gap: 1rem;*/
 	color: var(--accent);
-	font-family:cursive;
 }
 .logo span{
 	width: 4rem;
 }
 .connection{
 	position: relative;
-	padding-inline: 1rem;
+	padding: 1rem .1rem;
 }
 .connection span {
 	gap: 1rem;
@@ -35,7 +35,7 @@
 	content: '';
 	position: absolute;
 	left: 0;
-	top: .3rem;
+	top: 0;
 	width: 2px;
 	height: 1rem;
 	background: var(--secondary);

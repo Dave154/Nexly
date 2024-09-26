@@ -30,7 +30,7 @@ const Chats =()=>{
  		submit={handleSearch}
 
 		/>
-		<div className={styles.list_container}>
+		<div className={`${styles.list_container}`}>
 			<ul className={`${styles.list} ${'d_grid'}`}>
 				{ 
 					Object.entries(chats).filter((item)=>{
@@ -43,7 +43,7 @@ const Chats =()=>{
 						const id=item[0]
 						const image =''
 						const name = item[1].userInfo.displayName
-						const preview=item[1].lastMessage?.text
+						const preview=item[1].lastMessage?.text.substring(0, 1000);
 						const timeStamp=''
 						return <li className={`${styles.list_item} ${'flex'} ${'clickable'}`} key={id} onClick={()=>{
 							navigate(`${id}`)
@@ -71,6 +71,7 @@ const Chats =()=>{
 						</li>
 					})
 				}
+			
 			</ul>
 		</div>
 		<NewChat/>

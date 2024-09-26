@@ -58,7 +58,7 @@ const App=()=> {
           chatRoutes.map((route,i)=>{
             const {path,element,subroute} = route
             return <Route path={path} key={i} element={element}>
-              {windowWidth >= 700 &&  <Route path={subroute}/>} 
+                <Route path={subroute}/> 
             </Route>
      
           })

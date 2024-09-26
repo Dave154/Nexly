@@ -56,11 +56,14 @@ const Side =()=>{
   return <aside className={`${styles.sideBar } ${sideOpen && styles.active}`}>
     <div className={`${styles.sideBar_container} ${'d_grid'}`}>
     <div className={styles.content1}>
-  
-      <Menu 
+     <div className='flex'>
+         <Menu 
       onClick={handleSide}
       className={styles.menu_bar}
       />
+      <h2 className={`${styles.logo}`}>Nexly</h2>
+     </div>
+    
       <ul className={`${styles.list } ${'d_grid'}`}>
         {
           topList.map((item)=>{
@@ -75,7 +78,7 @@ const Side =()=>{
           </div>
 
           <div className={styles.activity}>
-          <span>3</span>
+          <span></span>
           </div>
         </li>
       })
@@ -99,7 +102,7 @@ const Side =()=>{
           </div>
 
           <div className={styles.activity}>
-          <span>3</span>
+          <span></span>
           </div>
         </li>
       })
@@ -120,7 +123,7 @@ const Side =()=>{
           </div>
 
           <div className={styles.activity}>
-           <span>3</span>
+           <span></span>
           </div>
         </li>
       })

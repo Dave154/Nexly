@@ -1,13 +1,14 @@
 .chats{
 	position: relative;
+	height: 100%;
 }
 .list_container{
-padding-top: 2rem;
-overflow: auto;
-width: 100%;
-height: calc(100vh - 9rem);
-place-items: center;
-
+ display: flex;
+	flex-direction: column;
+	overflow: auto;
+	padding-top: 2rem;
+	position: relative;
+	height: calc(100vh - 10rem);
 }
 .list_container::-webkit-scrollbar{
 	width: 2px;
@@ -31,7 +32,6 @@ gap: .3rem;
 aspect-ratio: 1/1;
 	place-content: center;
 	overflow: hidden;
-
 }
 .text{
 	width: 100%;
@@ -41,8 +41,12 @@ aspect-ratio: 1/1;
 }
 
 .text .preview{
+ max-width: 35vw;
 	font-size: var(--font4);
 	color: var(--text2);
+	 overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 .name{
 	font-size: var(--font3);
@@ -91,4 +95,22 @@ aspect-ratio: 1/1;
 .newChat.active .newChat_container{
 	height: 90%;
 
+}
+
+
+
+@media (max-width:700px){
+
+	.text .preview{
+ 		max-width: 70vw;
+	}
+		
+}
+
+@media (max-width:400px){
+
+	.text .preview{
+ 		max-width: 50vw;
+	}
+		
 }

@@ -1,9 +1,10 @@
 .sideBar{
 	position: fixed;
-	top: 0;
+/*	top: 0;*/
+bottom: 0;
 	height: 100%;
-	width: 3rem;
 	z-index: 90;
+	background: var(--primary);
 	border-radius: 0 var(--border_rad1) var(--border_rad1) 0;
 	transition:  background .5s, width .5s  ease;
 
@@ -13,11 +14,19 @@
 	background: var(--secondary);
 }
 .sideBar_container{
-	margin-top: 3rem;
 	padding: var(--padding1);
+	padding-top: 1.5rem;
 	position: relative;
 	grid-template-rows: 1fr;
-	height: 100vh;
+}
+.logo{
+	display: none;
+}
+.sideBar.active .logo{
+	display: block;
+	text-align: center;
+	width: 100%;
+	color: var(--accent);
 }
 .content2{
 
@@ -93,4 +102,13 @@
 }
 .list_item svg{
 	font-size: 1.3rem;
+}
+
+@media (max-width:700px){
+	.sideBar{
+		width: 0px;
+		overflow: hidden;
+	}
+	
+	
 }

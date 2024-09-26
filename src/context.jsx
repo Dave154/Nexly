@@ -16,13 +16,13 @@ const AppContext = React.createContext()
 			return ()=> unsub()
 	},[])
 
-      useEffect(()=>{
-        const resize=()=>{
-		      setWindowWidth(window.innerWidth)
-		     }
-        window.addEventListener('resize', resize)
-         return ()=> window.removeEventListener('resize',resize)
-     },[windowWidth])
+     //  useEffect(()=>{
+     //    const resize=()=>{
+		 //      setWindowWidth(window.innerWidth)
+		 //     }
+     //    window.addEventListener('resize', resize)
+     //     return ()=> window.removeEventListener('resize',resize)
+     // },[currentUser])
 
  	return <AppContext.Provider value={{windowWidth,currentUser}}>
  		{children}

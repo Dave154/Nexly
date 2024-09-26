@@ -9,7 +9,7 @@
   --secondary: #2C2C2C;
   --accent: #23714d;
   --hover:#41403f;
-  --text:#f1ccba;
+  --text:#ffff;
   --text2:#C3C3C3;
   --text_dark:#1c1c1c;
   --padding1:.4rem;
@@ -55,7 +55,7 @@ img{
   display: grid;
 }
 body{
-  color: var(--text);
+  color: var(--text) !important;
   background: var(--primary);
 }
 .clickable{
