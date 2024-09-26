@@ -1,7 +1,8 @@
 
 .chat{
- height: 100%;
- position: relative;;
+ height: 100vh;
+ position: relative;
+ grid-template-rows: 4rem 1fr auto ;
 }
 .chat_top{
 	border-bottom: 1px solid var(--accent);
@@ -28,7 +29,7 @@ aspect-ratio: 1/1;
 	overflow: auto;
 	padding: 0 1rem;
 	position: relative;
-	height: calc(100vh - 7rem);
+	max-height:100%;
 }
 .chat_container::-webkit-scrollbar{
 	width: 1px;
@@ -41,10 +42,9 @@ aspect-ratio: 1/1;
 	overflow: hidden;
 	align-items: flex-end;
 	border-top: 1px solid var(--accent);
-	position: relative;
 	width: 100%;
 	left: 0;
-	bottom: 0;;
+	bottom: 0;
 }
 .form{
 	padding-inline: .5rem;

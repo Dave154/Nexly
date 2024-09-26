@@ -1,6 +1,5 @@
 .sideBar{
 	position: fixed;
-/*	top: 0;*/
 bottom: 0;
 	height: 100%;
 	z-index: 90;
@@ -17,7 +16,9 @@ bottom: 0;
 	padding: var(--padding1);
 	padding-top: 1.5rem;
 	position: relative;
-	grid-template-rows: 1fr;
+/*	grid-template-rows: 1fr;*/
+	height: 100%;
+	
 }
 .logo{
 	display: none;

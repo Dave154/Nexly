@@ -69,9 +69,9 @@
  .search{
  	background: var(--primary);
  	border-radius: var(--border_rad2);
- 	box-shadow: 0px 2px 0px var(--accent);
+ 	box-shadow: 0px 1px 0px var(--accent);
  	overflow: hidden;
- 	padding: .2rem ;
+ 	padding: .6rem ;
  	margin-right: 1rem;
  }
  .search input{

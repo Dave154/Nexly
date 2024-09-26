@@ -96,11 +96,10 @@ useEffect(()=>{
 					<input id='file' type="file" onChange={(e)=>setImg(e.target.value)}/>
 				</label>
 				 <TextField
-				 className={styles.chatInput}
           id="outlined-multiline-flexible"
           placeholder='Type in Your Message'
           multiline
-          maxRows={1}
+          maxRows={4}
          	variant="standard"
           fullWidth 
           value ={text}

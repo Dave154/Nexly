@@ -30,7 +30,7 @@ const Chats =()=>{
  		submit={handleSearch}
 
 		/>
-		<div className={`${styles.list_container}`}>
+		<div className={`${styles.list_container} `}>
 			<ul className={`${styles.list} ${'d_grid'}`}>
 				{ 
 					Object.entries(chats).filter((item)=>{
@@ -60,7 +60,7 @@ const Chats =()=>{
 								    <p className={styles.time}>{timeStamp}</p>	
 							   </div>
 							   <div className={`${styles.bottom} ${'flex'}`}>
-								{preview ? <p className={styles.preview}>{preview}</p> : <Skeleton  width={'80%'}/>}
+								{preview && <p className={styles.preview}>{preview}</p>}
 									{ preview && 
 										<div className={styles.activity}>
 									           <span>3</span>
