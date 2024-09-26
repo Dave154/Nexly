@@ -54,6 +54,9 @@ img{
 .d_grid{
   display: grid;
 }
+.logo{
+  transform: rotate(-29deg);
+}
 body{
   color: var(--text) !important;
   background: var(--primary);

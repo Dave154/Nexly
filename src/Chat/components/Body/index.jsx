@@ -76,7 +76,7 @@ import {useState} from 'react'
  		</section>
  		<section className={`${styles.sub} ${subOpen && styles.sub_mini}`}>
  		{
- 			!subOpen ? <span className ={styles.logo}>
+ 			!subOpen ? <span className ={`${styles.logo} ${'logo'}`}>
 					<img src={logo} alt='logo' aria-label='logo'/>
 			</span> : <Sub/>
 			
