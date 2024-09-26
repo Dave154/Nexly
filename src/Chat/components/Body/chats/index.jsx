@@ -18,7 +18,7 @@ const Chats =()=>{
 		 	console.log(search)
 
 	const navigate=useNavigate()
-	return <article className={styles.chats}>
+	return <article className={`${styles.chats} ${'d_grid'}`}>
 		<Title 
 		text='Chats'
 		button={[<EditOutlined onClick={()=>setisNewChat(!isNewChat)}/>,<FilterListOutlined/>]}

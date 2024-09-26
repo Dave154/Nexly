@@ -10,15 +10,16 @@ import Message from './message.jsx'
 import {Search,Mic ,Send,AttachFile,AddReaction,PersonOutlined,ArrowBack} from '@mui/icons-material';
 import {CircularProgress,TextField} from '@mui/material'
 import {useNavigate} from 'react-router-dom'
+
 const Chat =()=>{
+
 	const navigate=useNavigate()
-	const {currentUser} =useUniversal()
+	const {currentUser,windowHeight} =useUniversal()
 	const {isEmoji, setIsEmoji,user,chatId,setSubOpen} = useGlobe()
 	const [messages,setMessages] =useState([''])
 	const [text,setText]=useState('')
 	const [img,setImg]=useState(null)
 	// const [loader,setLoader]=useState(null)
-
 const handleSend=async(e)=>{
 	e.preventDefault()
 	  setText('')
@@ -57,7 +58,9 @@ useEffect(()=>{
  setMessages([])
  return ()=> unSub()
 },[chatId])
-	return <div className={`${styles.chat} ${'d_grid'}`}>
+	return <div className={`${styles.chat} ${'d_grid'}`} style={{
+		maxHeight: `${windowHeight}px`
+	}} >
 		<div className={`${styles.chat_top} ${'flex'}`}>
 			<div className={`${styles.chat_profile} ${'flex'}`}>
 				<ArrowBack onClick={()=> {

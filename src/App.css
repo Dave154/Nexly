@@ -5,11 +5,11 @@
   padding: 0;
 }
 :root{
-  --primary: #1c1c1c;
-  --secondary: #2C2C2C;
+  --primary: rgba(100,100,100,.5);
+  --secondary: #fff;
   --accent: #23714d;
-  --hover:#41403f;
-  --text:#ffff;
+  --hover:rgba(200,200,200,.2);
+  --text:#000;
   --text2:#C3C3C3;
   --text_dark:#1c1c1c;
   --padding1:.4rem;

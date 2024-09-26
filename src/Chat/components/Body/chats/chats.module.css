@@ -1,6 +1,7 @@
 .chats{
 	position: relative;
-	height: 100vh;
+	height: 100%;
+	grid-template-rows:  5rem 3rem 1fr;
 }
 .list_container{
  	display: flex;

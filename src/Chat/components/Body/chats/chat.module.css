@@ -1,8 +1,10 @@
-
 .chat{
   position: relative;
- grid-template-rows: 4rem 1fr auto ;
+ grid-template-rows: 4rem 1fr auto;
 /* overflow: hidden;*/
+ height: 100%;
+ max-height: 100vh;
+
 }
 .chat_top{
 	border-bottom: 1px solid var(--accent);
@@ -17,7 +19,7 @@
 	border-radius: 50%;
 	width: 3rem;
 	background: var(--hover);
-aspect-ratio: 1/1;                 
+	aspect-ratio: 1/1;                 
 	place-content: center;
 	overflow: hidden;
 }
@@ -79,6 +81,7 @@ aspect-ratio: 1/1;
  padding: .3rem;
  max-width: 70%;
  position: relative;
+
 }
 
 .message_box:before{
@@ -100,6 +103,7 @@ aspect-ratio: 1/1;
 .currentUser{
 	background: var(--accent);
   align-self: flex-end;
+   color: #fff;
 }
 .attach{
 	position: relative;

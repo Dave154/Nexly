@@ -7,6 +7,7 @@ const AppContext = React.createContext()
 
  const AppProvider =({children})=>{
 	const [windowWidth,setWindowWidth]= useState()
+	const [windowHeight,setWindowHeight]= useState()
 	const [currentUser,setCurrentUser] = useState({})
  
 	useEffect(()=>{
@@ -17,15 +18,18 @@ const AppContext = React.createContext()
 	},[])
 	 const resize=()=>{
 		      setWindowWidth(window.innerWidth)
+		       setWindowHeight(window.innerHeight)
+		       console.log(windowHeight)
 		     }
 
+      
       useEffect(()=>{
-        resize()
+      	resize()
         window.addEventListener('resize', resize)
          return ()=> window.removeEventListener('resize',resize)
      },[windowWidth])
 
- 	return <AppContext.Provider value={{windowWidth,currentUser}}>
+ 	return <AppContext.Provider value={{windowWidth,windowHeight,currentUser}}>
  		{children}
  	</AppContext.Provider>
  }
