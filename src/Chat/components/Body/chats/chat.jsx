@@ -21,6 +21,7 @@ const Chat =()=>{
 
 const handleSend=async(e)=>{
 	e.preventDefault()
+	  setText('')
   if(img){
 
 
@@ -47,8 +48,6 @@ const handleSend=async(e)=>{
   	},
   	[chatId+ '.date']:serverTimestamp()
   })
-
-  setText('')
 }
 
 useEffect(()=>{

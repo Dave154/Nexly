@@ -6,7 +6,7 @@ import {onAuthStateChanged} from 'firebase/auth'
 const AppContext = React.createContext()
 
  const AppProvider =({children})=>{
-	const [windowWidth,setWindowWidth]= useState(window.innerWidth)
+	const [windowWidth,setWindowWidth]= useState()
 	const [currentUser,setCurrentUser] = useState({})
  
 	useEffect(()=>{
@@ -15,14 +15,15 @@ const AppContext = React.createContext()
 		})
 			return ()=> unsub()
 	},[])
+	 const resize=()=>{
+		      setWindowWidth(window.innerWidth)
+		     }
 
-     //  useEffect(()=>{
-     //    const resize=()=>{
-		 //      setWindowWidth(window.innerWidth)
-		 //     }
-     //    window.addEventListener('resize', resize)
-     //     return ()=> window.removeEventListener('resize',resize)
-     // },[currentUser])
+      useEffect(()=>{
+        resize()
+        window.addEventListener('resize', resize)
+         return ()=> window.removeEventListener('resize',resize)
+     },[windowWidth])
 
  	return <AppContext.Provider value={{windowWidth,currentUser}}>
  		{children}

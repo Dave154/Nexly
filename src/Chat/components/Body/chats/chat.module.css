@@ -1,8 +1,8 @@
 
 .chat{
- height: 100vh;
- position: relative;
+  position: relative;
  grid-template-rows: 4rem 1fr auto ;
+/* overflow: hidden;*/
 }
 .chat_top{
 	border-bottom: 1px solid var(--accent);
@@ -17,7 +17,7 @@
 	border-radius: 50%;
 	width: 3rem;
 	background: var(--hover);
-aspect-ratio: 1/1;
+aspect-ratio: 1/1;                 
 	place-content: center;
 	overflow: hidden;
 }
@@ -78,8 +78,9 @@ aspect-ratio: 1/1;
  border-radius:5px;
  padding: .3rem;
  max-width: 70%;
-position: relative;
+ position: relative;
 }
+
 .message_box:before{
   content: '';
   position: absolute;

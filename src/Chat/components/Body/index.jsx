@@ -2,6 +2,7 @@ import styles from './body.module.css'
 import {useNavigate} from 'react-router-dom'
 import {Outlet} from 'react-router-dom'
 import {useGlobe} from '../../context.jsx'
+import {useUniversal} from '../../.././context.jsx'
 import logo from '../../../assets/logo_nbg.png' 
 import Sub from './sub.jsx'
 import {CircularProgress,BottomNavigation,BottomNavigationAction,} from '@mui/material'
@@ -10,6 +11,7 @@ import  Side from '.././minidrawer'
 import {useState} from 'react'
  const Body =()=>{
  	 const navigate=useNavigate()
+ 	 const {windowHeight}=useUniversal()
  const {subOpen,isLoading}=useGlobe()
 
   const [value, setValue] = useState('recents');
@@ -51,7 +53,9 @@ import {useState} from 'react'
     },
   	]
 
- 	return <section className={`${styles.body} ${'d_grid'}`}>
+ 	return <section className={`${styles.body} ${'d_grid'}`} style={{
+ 		  height: `${windowHeight}px`
+ 	}}>
  		<section className={styles.main}>
  		<div className={`${styles.connection} ${!isLoading && styles.disabled} ${'d_grid'}`}>
 				 <CircularProgress color='inherit' size={20}/>
