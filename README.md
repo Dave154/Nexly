@@ -1,4 +1,6 @@
-# Nexly - Real-Time Chat App
+# Nexly - Real-Time Chat App 
+
+https://nexly-4pmx.vercel.app/
 
 Welcome to **Nexly**, a modern, sleek, and secure real-time chat application designed for seamless communication. Built using cutting-edge web technologies, Nexly offers a responsive and dynamic user interface that delivers a high-quality user experience. With Firebase integration for secure and efficient back-end functionality, Nexly aims to bring users to the *next level* of real-time chat applications.
 
