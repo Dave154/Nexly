@@ -37,7 +37,7 @@ import {Skeleton,CircularProgress} from '@mui/material'
  		console.log(combinedId)
  		const res = await getDoc(doc(db,'chats', combinedId))
  		console.log(user.photoURL,user.displayName)
- 		console.log(currentUser.photoURL, currentUser.displayName)
+ 		console.log(currentUser.photoURL, currentUser.displayName,user.photoURL)
  			if(!res.exists()){
  			// create a chat in chats collection 
  				await setDoc(doc(db,'chats',combinedId),{messages:[]})
@@ -46,7 +46,7 @@ import {Skeleton,CircularProgress} from '@mui/material'
  					 [combinedId+".userInfo"]: {
  					 	uid:user.uid,
  						displayName: user.displayName,
- 						photoURL: user.photoURL,
+ 						photoURL: `${user.photoURL ? user.photoURL :null}`,
  					 },
  					 [combinedId +'.date']: serverTimestamp()
  				})
@@ -54,7 +54,7 @@ import {Skeleton,CircularProgress} from '@mui/material'
  					 [combinedId + '.userInfo']: {
  					 	uid: currentUser.uid,
  						displayName: currentUser.displayName,
- 						photoURL: user.photoURL,
+ 						photoURL: `${currentUser.photoURL ? currentUser.photoURL :null}`,
  					 },
  					 [combinedId + '.date']: serverTimestamp()
  				})

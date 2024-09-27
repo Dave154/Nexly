@@ -1,5 +1,6 @@
 import styles from './profile.module.css'
 import {useUniversal} from '../../../.././context.jsx'
+import {useGlobe} from '../../.././context.jsx'
 import {PersonOutlined} from '@mui/icons-material'
 import {auth,db,storage} from '../../../.././firebase.js'
 import {signOut,updateProfile} from 'firebase/auth'
@@ -10,6 +11,7 @@ import { doc, onSnapshot ,updateDoc,Timestamp,arrayUnion,serverTimestamp} from "
 const Profile =()=>{
 	const {currentUser} =useUniversal()
 	const {displayName,photoURL,email}=currentUser
+	const {isEmoji, setIsEmoji,user,chatId,setSubOpen} = useGlobe()
 	const [name,setName] =useState('')
 	const [dp , setDp] =useState(null)
 	const [editable, setEditable] =useState('false')
@@ -24,12 +26,6 @@ const Profile =()=>{
 			 await updateDoc(doc (db, "users", currentUser.uid), {
 				 displayName:name,
 				});
-			 // await updateDoc(doc(db,'userChats',currentUser.uid),{
- 			// 		 [combinedId+".userInfo"]: {
- 			// 			photoURL
- 			// 		 },
- 			// 		 [combinedId +'.date']: serverTimestamp()
- 			// 	})
 		  	alert('Profile Updated')
 		}catch (err){
 			alert(err)
@@ -39,7 +35,7 @@ const Profile =()=>{
 
 const updatePhoto =async (file) =>{
 try {
-const storageRef = ref(storage, 'displayName');
+const storageRef = ref(storage, displayName);
 
 const uploadTask = uploadBytesResumable(storageRef, file);
 uploadTask.on('state_changed', 
@@ -121,14 +117,14 @@ const handleFileChange = (event) => {
 	</div>
 		
 		<div className={styles.name}>
-		 <button className={styles.edit} aria-label='Edit' onClick={()=>{
+		{/* <button className={styles.edit} aria-label='Edit' onClick={()=>{
 		 setEditable('true')
 		  if (citeRef.current) {
 		      citeRef.current.focus(); // Focus on the contentEditable cite element
 		    }
 			}
-		} > <EditOutlined/> </button>
-			<cite contentEditable={editable} onKeyDown={handleKeyDown} onInput={handleInput} ref={citeRef}>{displayName}</cite>
+		} > <EditOutlined/> </button>*/}
+			<cite contentEditable='false' onKeyDown={handleKeyDown} onInput={handleInput} ref={citeRef}>{displayName}</cite>
 			<p> Max 8 Chars</p>
 		</div>
 		<div className={styles.email}>

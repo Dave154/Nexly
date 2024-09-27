@@ -1,8 +1,8 @@
  import React, {useState ,useContext,useEffect,useReducer} from 'react'
-import { doc, onSnapshot } from "firebase/firestore";
+import { doc, onSnapshot,updateDoc, serverTimestamp } from "firebase/firestore";
 import {useUniversal} from '.././context.jsx'
 import {db} from '.././firebase.js'
-
+// import {collection,query,where,getDocs,getDoc,setDoc,doc, } from 'firebase/firestore'
 
  const ChatContext = React.createContext()
  const ChatProvider =({children}) =>{
@@ -85,8 +85,12 @@ useEffect(()=>{
    return ()=>  document.removeEventListener('click', close)
 },[isNewChat])
 
-  const handleSelect =(user)=>{
+  const handleSelect = async (user)=>{
     dispatch({type:'CHANGE_USER',payload:user})
+
+
+  
+
   }
  	return <ChatContext.Provider value={
  		{

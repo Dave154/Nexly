@@ -19,8 +19,8 @@
 	border-radius: 50%;
 	width: 3rem;
 	background: var(--hover);
-	height: 3rem;                
-	place-content: center;
+	aspect-ratio: 1/1;               
+	place-items: center;
 	overflow: hidden;
 }
 .chat_container{
@@ -68,25 +68,19 @@
 .form .chatInput > div::before{
 	display: none;
 }
-
-.emoji_picker aside{	
-	position: absolute;
-	bottom: -3%;
-	left: -20%;
-	transform: scale(.7);
-}
 .message_container{
   display: flex;
   gap: .3rem;
+  width: 100%;
+
 }
 .message_container .image{
 	width: 2rem;
 	height: 2rem;
-	overflow: hidden;
 	align-self: flex-end;
 }
 .message_box{
- width: 70%;
+	max-width: 70%;
  background: var(--hover);
  border-radius:5px;
  padding: .6rem;

@@ -76,17 +76,17 @@ useEffect(()=>{
 		</div>
 		<div className={`${styles.chat_container} ${'flex'}`}>
 			{messages.map(message=>{
-				if(messages.length=== 0){
-						return <p>No message in this Chat</p>
-				}else{
-
+		
 				return <div className={`${styles.message_container} ${message?.senderId === currentUser.uid && styles.currentUserCont}`}>
 			  		<div className={`${styles.image} ${'d_grid'}`}>
-						{(message?.senderId === currentUser.uid) ? <img src={currentUser?.photoURL} alt=''/> : <PersonOutlined/> }
+						{(message?.senderId === currentUser.uid) ? 
+						<img src={currentUser?.photoURL } alt=''/> 
+						: <img src={user?.photoURL } alt=''/> 
+						 }
 					</div>		
 				<Message message={message} key={message.id}/>
 				</div>
-				}
+
 			})} 
 		</div>
 		<div className={`${styles.chat_form} ${'d_grid'}`}>
