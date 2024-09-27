@@ -68,7 +68,7 @@ useEffect(()=>{
 					setSubOpen(false)
 				}  }/>
 				<div className={`${styles.image} ${'d_grid'}`}>
-					{false ? <img src='' alt=''/>: <PersonOutlined/>}
+					{user.photoURL? <img src={user.photoURL} alt=''/>: <PersonOutlined/>}
 				</div>
 					{ user.displayName ? <h5 className={styles.name}>  {user.displayName}</h5> :<Skeleton  width={'5rem'}/> }
 			</div>
@@ -80,19 +80,17 @@ useEffect(()=>{
 						return <p>No message in this Chat</p>
 				}else{
 
-				return <Message message={message} key={message.id}/>
+				return <div className={`${styles.message_container} ${message?.senderId === currentUser.uid && styles.currentUserCont}`}>
+			  		<div className={`${styles.image} ${'d_grid'}`}>
+						{(message?.senderId === currentUser.uid) ? <img src={currentUser?.photoURL} alt=''/> : <PersonOutlined/> }
+					</div>		
+				<Message message={message} key={message.id}/>
+				</div>
 				}
 			})} 
 		</div>
 		<div className={`${styles.chat_form} ${'d_grid'}`}>
 			<form action="" className={`${styles.form} ${'flex'}`} onSubmit={handleSend}>
-				<span className={`${styles.emoji} ${isEmoji && styles.active} ${'clickable'}`} onClick={()=>{
-
-					setIsEmoji(!isEmoji)}}>
-					<AddReaction/>
-				</span>
-
-
 				<label htmlFor="file" className={` ${styles.attach} ${'clickable'}`}>
 					<AttachFile/>
 					<input id='file' type="file" onChange={(e)=>setImg(e.target.value)}/>
@@ -114,12 +112,6 @@ useEffect(()=>{
 			</form>
 
 		</div>
-		{
-			isEmoji && <div className={styles.emoji_picker}>
-						<EmojiPicker/>	
-					</div>
-		}
-		
 			</div>
 	
 }

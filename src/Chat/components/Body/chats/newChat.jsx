@@ -6,38 +6,38 @@ import Title from '.././title.jsx'
 import {useState} from 'react'
 import {db} from '../../../.././firebase.js'
 import {collection,query,where,getDocs,getDoc,setDoc,doc, updateDoc, serverTimestamp} from 'firebase/firestore'
-import {Skeleton} from '@mui/material'
+import {Skeleton,CircularProgress} from '@mui/material'
 
  const NewChat =()=>{
  	const {isNewChat, setisNewChat}=useGlobe()
  	const {currentUser} =useUniversal()
  	const [username,setUserName]= useState('')
  	  const [user,setUser]= useState(null)
+ 	  const [loader ,setLoader] =useState(false)
  	 const handleSearch= async(e)=>{
 		 	e.preventDefault()
+		 	setLoader(true)
 		 	setUserName(e.target[0].value)
 		 	try {
-		 		const q = await query(collection(db,'users'),where('displayName',"==",username.toLowerCase()))
+		 		const q = await query(collection(db,'users'),where('displayName',"==",username))
 		 		const querySnapshot =await getDocs(q)
 		 		querySnapshot.forEach((doc)=>{
 		 			setUser(doc.data())
-		 			
+		 			setLoader(false)
 		 		})
 		 	}catch(err){
-
-		 		console.log(err,'err')
+		 	  alert(err)
+		 	  setLoader(false)
 		 	}
 
  	}
  	const handleSelect= async()=>{
- 		// check if chat exist
- 		// create if not
  		try {
- 		const combinedId= currentUser.uid > user.uid ? 
- 		currentUser.uid + user.uid 
- 		: user.uid + currentUser.uid;
+ 		const combinedId= currentUser.uid > user.uid ? currentUser.uid + user.uid : user.uid + currentUser.uid;
+ 		console.log(combinedId)
  		const res = await getDoc(doc(db,'chats', combinedId))
-
+ 		console.log(user.photoURL,user.displayName)
+ 		console.log(currentUser.photoURL, currentUser.displayName)
  			if(!res.exists()){
  			// create a chat in chats collection 
  				await setDoc(doc(db,'chats',combinedId),{messages:[]})
@@ -46,6 +46,7 @@ import {Skeleton} from '@mui/material'
  					 [combinedId+".userInfo"]: {
  					 	uid:user.uid,
  						displayName: user.displayName,
+ 						photoURL: user.photoURL,
  					 },
  					 [combinedId +'.date']: serverTimestamp()
  				})
@@ -53,12 +54,14 @@ import {Skeleton} from '@mui/material'
  					 [combinedId + '.userInfo']: {
  					 	uid: currentUser.uid,
  						displayName: currentUser.displayName,
+ 						photoURL: user.photoURL,
  					 },
  					 [combinedId + '.date']: serverTimestamp()
  				})
  			}
  		}catch(err){
- 			console.log(err,'error')
+ 			alert(err)
+ 			console.log(err.message)
  		}
  		setUserName('')
  		setUser(null)
@@ -69,13 +72,18 @@ import {Skeleton} from '@mui/material'
  	 	<Title text='New chat' button={[]}/>
  		<Search placeholder='Search User' 
  		 value={username} 
- 		 valuefunc={(e)=>setUserName(e.target.value)}
+ 		 valuefunc={(e)=>{
+ 		 	setUserName(e.target.value)
+ 		 	setUser(null)
+ 		 	setLoader(false)
+ 			 }
+ 		 }
  		 submit={handleSearch}
  		 />
 		{
-			user &&  <div className={`${styles.list_item} ${'flex'} ${'clickable'}`} onClick={handleSelect} >
+			user ?  <div className={`${styles.list_item} ${'flex'} ${'clickable'}`} onClick={handleSelect} >
 					<div className={`${styles.image} ${'d_grid'}`}>
-						{true ? <img src='' alt=''/>: <Skeleton  variant='circular' width={'3rem'} height={'3rem'} />}
+						{user.photoURL ? <img src={user.photoURL} alt='photo'/>: <Skeleton  variant='circular' width={'3rem'} height={'3rem'} />}
 
 					</div>
 					<div className={styles.text}>
@@ -83,10 +91,17 @@ import {Skeleton} from '@mui/material'
 							{ user.displayName ? <h5 className={styles.name}> {user.displayName}</h5> :<Skeleton  width={'50%'}/> }
 					   </div>
 					   <div className={`${styles.bottom} ${'flex'}`}>
-						{false ? <p className={styles.preview}>{preview}</p> : <Skeleton  width={'80%'}/>}
-
+						{user.bio ? <p className={styles.preview}>{user.bio}</p> : <Skeleton  width={'80%'}/>}
 					   </div>
 					</div>
+				</div> : <div className={`${'d_grid'}`} style={{
+					placeContent:'center',
+					paddingTop:'3rem'
+				}}>
+					{
+						loader &&  <CircularProgress color='inherit' size={20}/>
+					}
+
 				</div>
 		}
  	

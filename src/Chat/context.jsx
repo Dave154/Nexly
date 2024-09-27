@@ -52,7 +52,9 @@ useEffect(()=>{
                     setIsLoading(true)
                 }else{
                   setIsLoading(false)
+
                 }
+                console.log(doc.data())
              doc.data() && setChats(doc.data()) 
             });
 

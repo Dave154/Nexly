@@ -7,7 +7,7 @@ import {CircularProgress} from '@mui/material'
 // import { GoogleAuthProvider,signInWithPopup} from "firebase/auth";
 // import {auth} from '../firebase.js'
 
-const Auth =({type,Func,opp,loading})=>{
+const Auth =({type,Func,opp,loading,error})=>{
 
 	return <AuthProvider>
 	<section className={`${styles.authentique} ${'d_grid'}`}>

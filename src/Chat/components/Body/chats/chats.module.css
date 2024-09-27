@@ -9,11 +9,11 @@
 	overflow: auto;
 	padding-top: 2rem;
 	position: relative;
-	height: calc(100% - 7.5rem);
+/*	height: calc(100% - 7.5rem);*/
 }
 .list_container::-webkit-scrollbar{
 	width: 2px;
-	background: ;
+/*	background: ;*/
 }
 .list_container::-webkit-scrollbar-thumb{
 	background: var(--hover);
@@ -90,7 +90,7 @@ aspect-ratio: 1/1;
 	height: 0%;
 	border-radius: 20px 20px 0 0;
 	padding: 1rem;
-	background: var(--primary);
+	background: var(--hover);
 	transition: height .5s ease;
 }
 .newChat.active .newChat_container{
@@ -100,10 +100,10 @@ aspect-ratio: 1/1;
 
 
 
+
 @media (max-width:700px){
 .list_container{
-
-	height: calc(100% - 10.5rem);
+	height: calc(100% - 4rem);
 }
 	.text .preview{
  		max-width: 70vw;

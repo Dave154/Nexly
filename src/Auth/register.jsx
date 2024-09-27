@@ -23,6 +23,7 @@ const Register =()=>{
 			try{
 				const response = await createUserWithEmailAndPassword(auth, email, password)
 				const storageRef = ref(storage, displayName);
+				console.log(response)
 				     await updateProfile(response.user,{
 				     	displayName,
 				     })

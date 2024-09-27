@@ -1,4 +1,5 @@
 import {useState} from 'react'
+import {useUniversal} from '../../.././context.jsx'
 import styles from './miniDrawer.module.css'
 import { Menu,Chat,Call ,StarBorderOutlined, Archive,Settings,PersonOutlined} from '@mui/icons-material';
 import {useGlobe} from '../.././context.jsx'
@@ -31,6 +32,12 @@ const midList =[
       txt:'Archive',
       route:'Archive'
     },
+      {
+      id:2,
+      icon: <Settings/>,
+      txt:'Setting',
+      route:'Setting'
+    },
 
   ]
 
@@ -41,15 +48,11 @@ const bottomList =[
       txt:'Setting',
       route:'Setting'
     },
-     {
-      id:1,
-      icon: <PersonOutlined/>,
-      txt:'Profile',
-      route:'Profile'
-    },
-
+   
   ]
 const Side =()=>{
+  const {currentUser} =useUniversal()
+  const {displayName,photoURL,email}=currentUser
   const navigate=useNavigate()
   const location = useLocation()
   const {sideOpen,handleSide,closeSide}=useGlobe()
@@ -108,27 +111,19 @@ const Side =()=>{
       })
         }
       </ul>
-      <ul className={`${styles.list } ${'d_grid'}`}>
-        {
-          bottomList.map((item)=>{
-        const {id,icon,txt,route} = item;
-
-        return <li key={id} className ={`${styles.list_item} ${location.pathname === `/chat/${route}` && styles.active}`} onClick={()=>{
-          navigate(route)
+          
+          <div className ={`${styles.list_item} ${styles.profile} ${location.pathname === `/chat/profile` && styles.active}`} onClick={()=>{
+          navigate('profile')
           closeSide()
         }}> 
-          <div className={styles.left}>
-          {icon}
-         <p>{txt}</p>
+        <div className={styles.left}>
+           <div className={`${styles.image} ${'d_grid'}`}>
+            {photoURL ? <img src={photoURL} alt='profile'/>: <PersonOutlined/>}
+          </div>  
+           <p>Profile</p>
           </div>
+        </div>
 
-          <div className={styles.activity}>
-           <span></span>
-          </div>
-        </li>
-      })
-        }
-      </ul>
       </div>
     </div>
   </aside>

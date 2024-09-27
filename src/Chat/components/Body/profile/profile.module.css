@@ -4,17 +4,26 @@
   place-content: center;
   gap: 1rem;
 }
-.image{
+.profile_photo{
+	position: relative;
+}
+.image {
 	border-radius: 50%;
 	width: 7rem;
 	background: var(--hover);
-aspect-ratio: 1/1;
+	aspect-ratio: 1/1;
 	place-content: center;
 	overflow: hidden;
+	
 }
 .name{
 	font-size: 2rem;
 	text-transform: capitalize;
+	position: relative;
+}
+.name p{
+	font-size: .7rem;
+	color: var(--accent);
 }
 .email{
 
@@ -27,4 +36,16 @@ aspect-ratio: 1/1;
 	text-align: center;
 	
 	background: var(--accent);
+}
+.edit{
+	position: absolute;
+	right: -1rem;
+	top: 0;
+	z-index: 30;
+}
+.edit label{
+	cursor: inherit;
+}
+.edit input{
+	display: none;
 }

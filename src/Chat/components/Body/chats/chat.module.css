@@ -7,7 +7,7 @@
 
 }
 .chat_top{
-	border-bottom: 1px solid var(--accent);
+	box-shadow: 1px 1px 3px var(--hover);
  	padding: .5rem 1rem;
  	height: 4rem;
 }
@@ -19,19 +19,20 @@
 	border-radius: 50%;
 	width: 3rem;
 	background: var(--hover);
-	aspect-ratio: 1/1;                 
+	height: 3rem;                
 	place-content: center;
 	overflow: hidden;
 }
 .chat_container{
 	flex-direction: column;
 	align-items: flex-start;
-	background: var(--primary);
+/*	background: var(--primary);*/
 	gap: 1rem;
 	overflow: auto;
 	padding: 0 1rem;
 	position: relative;
 	max-height:100%;
+	padding-top: 1rem;
 }
 .chat_container::-webkit-scrollbar{
 	width: 1px;
@@ -43,13 +44,12 @@
 .chat_form{
 	overflow: hidden;
 	align-items: flex-end;
-	border-top: 1px solid var(--accent);
 	width: 100%;
 	left: 0;
 	bottom: 0;
 }
 .form{
-	padding-inline: .5rem;
+	padding: .5rem;
 	gap: .4rem;
 }
 .form span{
@@ -75,24 +75,32 @@
 	left: -20%;
 	transform: scale(.7);
 }
-.message_box{
- background: var(--secondary);
- border-radius:5px;
- padding: .3rem;
- max-width: 70%;
- position: relative;
-
+.message_container{
+  display: flex;
+  gap: .3rem;
 }
-
+.message_container .image{
+	width: 2rem;
+	height: 2rem;
+	overflow: hidden;
+	align-self: flex-end;
+}
+.message_box{
+ width: 70%;
+ background: var(--hover);
+ border-radius:5px;
+ padding: .6rem;
+ position: relative;
+}
 .message_box:before{
   content: '';
   position: absolute;
   top: 0;  
   left: -.4rem;
   border-top: 0rem solid transparent;
-  border-right: .8rem solid var(--secondary);
+  border-right: 1rem solid var(--hover);
   border-bottom: .5rem solid transparent;
-  border-radius: 10px;
+  border-radius: 20px;
 }
 .message_box.currentUser:before{
 	left: initial;
@@ -100,9 +108,13 @@
   border-left: .8rem solid var(--accent);
   border-right: initial;
 }
+.currentUserCont{
+  align-self: flex-end;
+  flex-direction: row-reverse;
+}
+
 .currentUser{
 	background: var(--accent);
-  align-self: flex-end;
    color: #fff;
 }
 .attach{

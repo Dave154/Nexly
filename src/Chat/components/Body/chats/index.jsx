@@ -13,10 +13,7 @@ const Chats =()=>{
 		 const handleSearch=(e)=>{
 		 	e.preventDefault()
 		 	setSearch(e.target.value)
-	
 		 }
-		 	console.log(search)
-
 	const navigate=useNavigate()
 	return <article className={`${styles.chats} ${'d_grid'}`}>
 		<Title 
@@ -39,12 +36,13 @@ const Chats =()=>{
 						}else{
 							return item
 						}
-					} )?.sort((a,b)=>b[1].date-a[1].date).map(item=>{
+					} )?.sort((a,b)=>b[1].date - a[1].date).map(item=>{
 						const id=item[0]
-						const image =''
-						const name = item[1].userInfo.displayName
+						const image =item[1].userInfo?.photoURL
+						const name = item[1].userInfo?.displayName
 						const preview=item[1].lastMessage?.text.substring(0, 1000);
 						const timeStamp=''
+						console.log(item)
 						return <li className={`${styles.list_item} ${'flex'} ${'clickable'}`} key={id} onClick={()=>{
 							navigate(`${id}`)
 							setSubOpen(true)
@@ -61,11 +59,7 @@ const Chats =()=>{
 							   </div>
 							   <div className={`${styles.bottom} ${'flex'}`}>
 								{preview && <p className={styles.preview}>{preview}</p>}
-									{ preview && 
-										<div className={styles.activity}>
-									           <span>3</span>
-									      </div>
-								    }
+									
 							   </div>
 							</div>
 						</li>

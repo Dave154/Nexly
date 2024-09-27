@@ -1,8 +1,8 @@
 .sideBar{
 	position: fixed;
-bottom: 0;
-	height: 100%;
+  bottom: 0;
 	z-index: 90;
+		height: 100%;
 	background: var(--primary);
 	border-radius: 0 var(--border_rad1) var(--border_rad1) 0;
 	transition:  background .5s, width .5s  ease;
@@ -16,9 +16,8 @@ bottom: 0;
 	padding: var(--padding1);
 	padding-top: 1.5rem;
 	position: relative;
-/*	grid-template-rows: 1fr;*/
-	height: 100%;
 	overflow: auto;
+	height: 100%;
 }
 .logo{
 	display: none;
@@ -33,7 +32,7 @@ bottom: 0;
 
 }
 .list{
-	gap: .5rem;
+	gap: 2rem;
 	position: relative;
 	padding-block: 2rem;
 }
@@ -71,6 +70,21 @@ bottom: 0;
 	opacity: 1;
 	display: block;
 	transition: opacity .4s display 1s 4s ease;
+}
+.image{
+	border-radius: 50%;
+	width: 2rem;
+	background: var(--hover);
+	aspect-ratio: 1/1;                 
+	place-content: center;
+	overflow: hidden;
+}
+.profile{
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	width: 100%;
+	background: var(--primary);
 }
 
 .activity{
