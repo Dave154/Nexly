@@ -12,10 +12,6 @@ Welcome to **Nexly**, a modern, sleek, and secure real-time chat application des
   
 - **Responsive UI**: Nexly's responsive design ensures a smooth experience on any device—whether on mobile, tablet, or desktop.
 
-- **User Status Indicator**: See who’s online and available to chat with real-time presence tracking.
-
-- **Typing Indicators**: Know when someone is typing to you with real-time typing status updates.
-
 - **Emojis and Reactions**: Express yourself with a wide range of emojis and message reactions for more interactive conversations.
 
 - **Lightweight & Fast**: Designed to be minimalistic with a focus on performance, ensuring a fast user experience even on slower networks.
@@ -42,7 +38,7 @@ Follow the steps below to set up **Nexly** on your local machine.
 
   ```bash
   git clone https://github.com/yourusername/nexly-chat-app.git
-  cd nexly-chat-app
+  cd nexly
   ```
 
 ### Installation
@@ -62,20 +58,20 @@ Follow the steps below to set up **Nexly** on your local machine.
 3. **Start the development server**:
 
    ```bash
-   npm start
+   npm run dev
    ```
 
    Your app will be available at `http://localhost:5173`.
 
 ## How to Use
-
 - **Sign up/Login**: Use the authentication system to create an account or log in to an existing one.
 - **Start a Chat**: Once logged in, select a user from the available list or search for them by username to start a conversation.
 - **Send Messages**: Type your message and hit send. You’ll see it appear instantly for both users.
 - **Enjoy Real-Time Updates**: See when users are online, typing, or sending new messages in real-time.
 
 ## Future Features
-
+- **Typing Indicators**: Know when someone is typing to you with real-time typing status updates.
+- **User Status Indicator**: See who’s online and available to chat with real-time presence tracking.
 - **Group Chats**: Create and manage group conversations.
 - **Media Sharing**: Share images, videos, and files directly within the chat.
 - **Push Notifications**: Real-time notifications for messages, even when the app is closed.
