@@ -1,4 +1,3 @@
- 
  *{
   box-sizing: border-box;
   margin: 0;
@@ -9,8 +8,9 @@
   --secondary:#202329;
   --accent: #6b8afd;
   --hover:#2E333D;
+  --hover_blur: rgba(200, 200, 200, .06);
   --text:#ffff;
-  --text2:#C3C3C3;
+  --text2: rgba(200,200,200,.6);
   --text_dark:#1c1c1c;
   --padding1:.4rem;
   --border_rad1:10px;

@@ -14,7 +14,16 @@
 	aspect-ratio: 1/1;
 	place-content: center;
 	overflow: hidden;
+	position: relative;
 	
+}
+.loader{
+	position: absolute;
+	inset: 0;
+	background: var(--hover);
+	z-index: 100;
+	place-content: center;
+
 }
 .name{
 	font-size: 2rem;

@@ -3,15 +3,15 @@
   bottom: 0;
 	z-index: 90;
 		height: 100%;
+		width: 13rem;
 	background: var(--primary);
 	border-radius: 0 var(--border_rad1) var(--border_rad1) 0;
 	transition:  background .5s, width .5s  ease;
-
-}
-.sideBar.active{
-	width: 13rem;
 	background: var(--secondary);
 }
+.sideBar.active{
+}
+
 .sideBar_container{
 	padding: var(--padding1);
 	padding-top: 1.5rem;
@@ -19,10 +19,8 @@
 	overflow: auto;
 	height: 100%;
 }
-.logo{
-	display: none;
-}
-.sideBar.active .logo{
+
+ .logo{
 	display: block;
 	text-align: center;
 	width: 100%;
@@ -36,9 +34,11 @@
 	position: relative;
 	padding-block: 2rem;
 }
-.content1 > .menu_bar{
-	font-size: 2.5rem;
+.sideBar_container .content1  .menu_bar{
+/*	font-size: 2.5rem;*/
 	padding: 0;
+	display: none;
+	cursor: pointer;
 }
 .content1 > .menu_bar, .list_item{
 	position: relative;
@@ -62,11 +62,7 @@
   gap: 1rem;
 
 }
-.list_item .left p{
-	opacity: 0;
-	display: none;
-}
-.sideBar.active .list_item .left p{
+ .list_item .left p{
 	opacity: 1;
 	display: block;
 	transition: opacity .4s display 1s 4s ease;
@@ -88,16 +84,15 @@
 }
 
 .activity{
-	position: absolute;
 	top: 0;
 	left: 0;
 	background: var(--accent);
 	width: .7rem;
 	height: .7rem;
 	border-radius: 50%;
+	position: relative;
 }
 .sideBar.active .activity{
-	position: relative;
 }
 .activity span{
 	position: absolute;
@@ -119,6 +114,47 @@
 	font-size: 1.3rem;
 }
 
+@media (max-width: 1200px){
+	.sideBar{
+		width: initial;
+}
+.sideBar.active{
+	width: 13rem;
+
+}
+.sideBar_container .content1  .menu_bar{
+	display: block;
+}
+.logo{
+	display: none;
+}
+.sideBar.active .logo{
+	display: block;
+}
+.list_item .left p{
+	opacity: 0;
+	display: none;
+}
+.sideBar.active .list_item .left p{
+	opacity: 1;
+	display: block;
+	transition: opacity .4s display 1s 4s ease;
+}
+.activity{
+	position: absolute;
+}
+.sideBar.active .activity{
+	position: relative;
+}
+.activity span{
+	position: absolute;
+	font-size: .7rem;
+	color: var(--primary);
+	display: grid;
+	inset: 0;
+	place-content: center;
+}
+}
 @media (max-width:700px){
 	.sideBar{
 		width: 0px;

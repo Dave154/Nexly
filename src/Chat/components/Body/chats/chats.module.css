@@ -13,13 +13,12 @@
 }
 .list_container::-webkit-scrollbar{
 	width: 2px;
-/*	background: ;*/
 }
 .list_container::-webkit-scrollbar-thumb{
 	background: var(--hover);
 }
 .list{
-gap: .3rem;
+gap: .5rem;
 }
 
 .list_item{
@@ -41,10 +40,13 @@ aspect-ratio: 1/1;
 	justify-content: space-between;
 }
 
-.text .preview{
- max-width: 35vw;
+.text .bottom{
 	font-size: var(--font4);
 	color: var(--text2);
+}
+.text .preview{
+ max-width: 15vw;
+
 	 overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
@@ -90,8 +92,10 @@ aspect-ratio: 1/1;
 	height: 0%;
 	border-radius: 20px 20px 0 0;
 	padding: 1rem;
-	background: var(--hover);
+	background:var(--hover_blur);
+	backdrop-filter: blur(10px);
 	transition: height .5s ease;
+	box-shadow: inset 0px 10px  25px var(--hover);
 }
 .newChat.active .newChat_container{
 	height: 90%;
@@ -100,6 +104,12 @@ aspect-ratio: 1/1;
 
 
 
+@media (max-width:1200px){
+	.text .preview{
+ 		max-width: 20vw;
+	}
+		
+}
 
 @media (max-width:700px){
 .list_container{

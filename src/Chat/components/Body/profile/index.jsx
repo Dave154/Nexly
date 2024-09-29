@@ -1,11 +1,11 @@
 import styles from './profile.module.css'
 import {useUniversal} from '../../../.././context.jsx'
 import {useGlobe} from '../../.././context.jsx'
-import {PersonOutlined} from '@mui/icons-material'
 import {auth,db,storage} from '../../../.././firebase.js'
 import {signOut,updateProfile} from 'firebase/auth'
 import { getStorage, ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
-import { EditOutlined} from '@mui/icons-material';
+import {CircularProgress} from '@mui/material'
+import { EditOutlined,PersonOutlined} from '@mui/icons-material';
 import {useState,useRef} from 'react'
 import { doc, onSnapshot ,updateDoc,Timestamp,arrayUnion,serverTimestamp} from "firebase/firestore";
 const Profile =()=>{
@@ -15,6 +15,7 @@ const Profile =()=>{
 	const [name,setName] =useState('')
 	const [dp , setDp] =useState(null)
 	const [editable, setEditable] =useState('false')
+	const [uploadProgress,setUploadProgress]= useState(null)
 	const citeRef=useRef(null)
 	const fileInputRef = useRef(null);
 		
@@ -41,7 +42,8 @@ const uploadTask = uploadBytesResumable(storageRef, file);
 uploadTask.on('state_changed', 
   (snapshot) => {
     const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
-    console.log('Upload is ' + progress + '% done');
+    setUploadProgress(progress)
+
     switch (snapshot.state) {
       case 'paused':
         console.log('Upload is paused');
@@ -62,11 +64,10 @@ uploadTask.on('state_changed',
 			 await updateDoc(doc (db, "users", currentUser.uid), {
 				 photoURL:downloadURL,
 				});
-  
+  				setUploadProgress(null)
     });
   }
 );
-		  	alert('Profile Photo')
 }catch (err){
 	alert(err)
 }
@@ -113,6 +114,11 @@ const handleFileChange = (event) => {
 		     </button>
 		<div className={`${styles.image} ${'d_grid'}`}>
 			{photoURL ? <img src={photoURL} alt='Profile Photo'/>: <PersonOutlined fontSize='large'/>}
+	{
+		 uploadProgress && <div className={`${styles.loader} ${'d_grid'}`}>
+			<CircularProgress variant="determinate" value={uploadProgress} />
+		</div>
+	}	
 		</div>
 	</div>
 		
@@ -124,7 +130,7 @@ const handleFileChange = (event) => {
 		    }
 			}
 		} > <EditOutlined/> </button>*/}
-			<cite contentEditable='false' onKeyDown={handleKeyDown} onInput={handleInput} ref={citeRef}>{displayName}</cite>
+			<cite  onKeyDown={handleKeyDown} onInput={handleInput} ref={citeRef}>{displayName}</cite>
 			<p> Max 8 Chars</p>
 		</div>
 		<div className={styles.email}>

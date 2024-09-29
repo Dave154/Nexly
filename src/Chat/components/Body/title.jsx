@@ -8,8 +8,8 @@
 		<div className={`${styles.buttons} ${'flex'}`}>
 			{
 				button.map((item,i)=>{
-					return <button key={i} className={`${styles.button} ${'clickable'}`}>
-						{item}
+					return <button key={i} className={`${styles.button} ${'clickable'}`} onClick={item.func}>
+						{item.icon}
 					</button>
 				})
 			}
