@@ -6,7 +6,7 @@ import Body from './components/Body'
  import Grid from '@mui/material/Grid'
 const Index =()=>{
 	return <ChatProvider>
-	<Grid container>
+	<Grid container className='chatContainer'>
 		<Header/>
 		<Side/>
 		<Body/>

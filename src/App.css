@@ -21,6 +21,7 @@
    --font4:.8rem;
    --font5:.5rem;
 }
+
 ul{
   list-style:none; 
 }
@@ -59,8 +60,22 @@ img{
   transform: rotate(-29deg);
 }
 body{
-  color: var(--text) !important;
   background: var(--primary);
+  color: var(--text);
+}
+.chatContainer{
+  
+}
+.chatContainer{
+/*    --primary: #fff;*/
+/*  --secondary:#f4f4f4;
+  --accent: #6b8afd;
+  --hover:#a0a2a8;
+  --hover_blur: rgba(20, 20, 20, .1);
+  --text:#1c1c1c;
+  --text2: rgba(200,200,200,.6);
+  --text_dark:#1c1c1c;
+*/
 }
 .clickable{
   cursor: pointer;

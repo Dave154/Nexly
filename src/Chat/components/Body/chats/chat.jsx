@@ -11,11 +11,12 @@ import Message from './message.jsx'
 import CancelIcon from '@mui/icons-material/Cancel';
 import {Search,Mic , Send,AttachFile,AddReaction,PersonOutlined,ArrowBack} from '@mui/icons-material';
 import {CircularProgress,TextField} from '@mui/material'
-import {useNavigate} from 'react-router-dom'
+import {useNavigate,useLocation} from 'react-router-dom'
 
 const Chat =()=>{
 
 	const navigate=useNavigate()
+	const location =useLocation()
 	const {currentUser,windowHeight} =useUniversal()
 	const {isEmoji, setIsEmoji,user,chatId,setSubOpen} = useGlobe()
 	const [messages,setMessages] =useState([])
@@ -152,7 +153,13 @@ useEffect(()=>{
 		<div className={`${styles.chat_top} ${'flex'}`}>
 			<div className={`${styles.chat_profile} ${'flex'}`}>
 				<ArrowBack onClick={()=> {
-					navigate('/chat')
+					if(location.pathname.includes('Archive')){
+					navigate('/chat/Archive')
+					}else if(location.pathname.includes('Starred')){
+						navigate('/chat/Starred')
+					}else{
+						navigate('/chat')
+					}
 					setSubOpen(false)
 				}  }/>
 				<div className={`${styles.image} ${'d_grid'}`}>
