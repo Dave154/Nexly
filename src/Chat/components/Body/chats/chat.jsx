@@ -21,6 +21,8 @@ const Chat =()=>{
 	const [messages,setMessages] =useState([])
 	const [text,setText]=useState('')
 	const [img,setImg]=useState(null)
+	const [dropImage, setDropImage] = useState('');
+	const [dragOver,setDragOver]=useState(false)
 	// const [loader,setLoader]=useState(null)
 const handleSend=async(e)=>{
 	e.preventDefault()
@@ -97,9 +99,56 @@ useEffect(()=>{
  setText('')
  return ()=> unSub()
 },[chatId])
+
+		// DRAG AND DROP IMAGE ON THE THE CHAT COMPONENT
+  const handleDragOver = (e) => {
+    e.preventDefault();
+     e.stopPropagation();
+  };
+    const handleDragEnter = (e) => {
+    e.preventDefault();
+    setDragOver(true);
+  };
+  const handleDragLeave = (e) => {
+    e.preventDefault();
+
+  };
+  const handleDrop = (e) => {
+    e.preventDefault();
+     e.stopPropagation();
+     setDragOver(false);
+    const data = e.dataTransfer;
+    const file = data.files[0];
+
+    if (file && file.type.startsWith('image/')) {
+      const imageUrl = URL.createObjectURL(file);
+        setImg(imageUrl);
+
+    }
+
+    const imageUrlFromDrag = data.getData('text/uri-list'); // URL of dragged image
+    if (imageUrlFromDrag) {
+      setDropImage(imageUrlFromDrag);
+    }
+  };
+
 	return <div className={`${styles.chat} ${'d_grid'}`} style={{
 		maxHeight: `${windowHeight}px`
-	}} >
+	}}
+			 onDragOver={handleDragOver}
+      onDragEnter={handleDragEnter}
+      onDragLeave={handleDragLeave}
+	 >
+
+	{dragOver && 
+	<div className={`${styles.drop_image} `} 
+        onDrop={handleDrop}>
+        <article  className={`${'d_grid'}`}>
+        	<h2> Drop Image Here </h2>
+        </article>
+
+	</div>
+}
 		<div className={`${styles.chat_top} ${'flex'}`}>
 			<div className={`${styles.chat_profile} ${'flex'}`}>
 				<ArrowBack onClick={()=> {

@@ -6,6 +6,7 @@ import Login from './Auth/login.jsx'
 import Register from './Auth/register.jsx'
 import Chats from './Chat/components/Body/chats'
 import Starred from './Chat/components/Body/starred'
+import Archive from './Chat/components/Body/archive'
 import Profile from './Chat/components/Body/profile'
 import { auth } from "./firebase";
 import {Routes,Route,Navigate} from 'react-router-dom'
@@ -25,6 +26,11 @@ const chatRoutes=[
        {
         path:'starred',
         element:<Starred/>,
+        subroute:':id'
+      },
+      {
+        path:'archive',
+        element:<Archive/>,
         subroute:':id'
       },
        {

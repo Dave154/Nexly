@@ -116,7 +116,7 @@ const handleFileChange = (event) => {
 			{photoURL ? <img src={photoURL} alt='Profile Photo'/>: <PersonOutlined fontSize='large'/>}
 	{
 		 uploadProgress && <div className={`${styles.loader} ${'d_grid'}`}>
-			<CircularProgress variant="determinate" value={uploadProgress} />
+			
 		</div>
 	}	
 		</div>

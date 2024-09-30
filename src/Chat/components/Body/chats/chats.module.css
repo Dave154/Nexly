@@ -1,7 +1,6 @@
 .chats{
 	position: relative;
-	height: 100%;
-	grid-template-rows:  5rem 3rem 1fr;
+	height: 100vh;
 }
 .list_container{
  	display: flex;
@@ -9,7 +8,7 @@
 	overflow: auto;
 	padding-top: 2rem;
 	position: relative;
-/*	height: calc(100% - 7.5rem);*/
+	height: 100%;
 }
 .list_container::-webkit-scrollbar{
 	width: 2px;
@@ -74,6 +73,10 @@ aspect-ratio: 1/1;
 }
 .more_option i{
 	cursor: alias;
+
+}
+.more_option i:hover{
+	color: var(--accent);
 }
 .more_option_deets{
 	position: absolute;
@@ -94,7 +97,35 @@ aspect-ratio: 1/1;
   font-size: var(--font3);
 }
 
+.delete_modal{
+	background: var(--hover);
+	padding: 1rem;
+	border-radius: var(--border_rad1);
+	gap: 1rem;
+	justify-content: center;
+	z-index: 99;
+}
+.delete_modal div:nth-of-type(1){
+	padding: 2rem;
+}
+.delete_modal p{
+	text-align: center;
+}
+.delete_modal p:nth-of-type(2) {
+	color: var(--text2);
+	font-size: var(--font4);
+	font-style: italic;
+}
+.delete_modal p:nth-of-type(2):before ,
+.delete_modal p:nth-of-type(2):after{
+	content: '*';
+	color: red;
+}
 
+.delete_modal .button{
+	gap: 1rem;
+	justify-self: right;
+}
 .activity{
 	background: var(--accent);
 	border-radius: 20px;
@@ -130,7 +161,7 @@ aspect-ratio: 1/1;
 	border-radius: 20px 20px 0 0;
 	padding: 1rem;
 	background:var(--hover_blur);
-	backdrop-filter: blur(10px);
+	backdrop-filter: blur(30px);
 	transition: height .5s ease;
 	box-shadow: inset 0px 10px  25px var(--hover);
 }

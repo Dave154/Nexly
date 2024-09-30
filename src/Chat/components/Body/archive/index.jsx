@@ -2,7 +2,7 @@ import Title from '../title.jsx'
 import SearchBar from '../search.jsx'
 import ChatsReusable from '.././chats/chatsReusable.jsx'
 import {useState,useEffect} from 'react'
-const Starred =()=>{
+const Archive =()=>{
 	const [search,setSearch]= useState('')
 
 	 const handleSearch=(e)=>{
@@ -12,7 +12,7 @@ const Starred =()=>{
 
 	return <article>
 	<Title 
-		text='Starred'
+		text='Archive'
 		button={[]}
 		/>
 		<SearchBar
@@ -22,8 +22,8 @@ const Starred =()=>{
  		submit={handleSearch}
 
 		/>
-		<ChatsReusable filter='star' search={search}/>
+		<ChatsReusable filter='archive' search={search}/>
 		
 	</article>
 }
-export default Starred
+export default Archive
