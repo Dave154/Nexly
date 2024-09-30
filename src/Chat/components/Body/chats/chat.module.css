@@ -110,7 +110,7 @@
 	gap: 1rem;
 }
 .message_content p{
-	max-width: 20rem;
+	max-width: 10rem;
 	word-wrap: break-word; 
   overflow-wrap: break-word;
   white-space: normal;

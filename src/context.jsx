@@ -19,7 +19,6 @@ const AppContext = React.createContext()
 	 const resize=()=>{
 		      setWindowWidth(window.innerWidth)
 		       setWindowHeight(window.innerHeight)
-		       console.log(windowHeight)
 		     }
 
       

@@ -13,10 +13,11 @@ import logo from '../../../.././assets/logo.png'
  			
  		</div>
  		<div className={`${styles.message_content} ${'d_grid'}`}>
- 			{message?.img && 
-			<div className={styles.message_img}>
- 				<img src={message?.img} alt=""/>
- 			</div>
+ 			{
+ 				message?.img && 
+			    	<div className={styles.message_img}>
+			 			<img src={message?.img} alt=""/>
+		 			</div>
  			}
  			{
  				message?.text !== '' && <p>{message?.text}</p>				

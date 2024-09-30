@@ -23,7 +23,7 @@ const Register =()=>{
 			try{
 				const response = await createUserWithEmailAndPassword(auth, email, password)
 				const storageRef = ref(storage, displayName);
-				console.log(response)
+				console.log(response.user)
 				     await updateProfile(response.user,{
 				     	displayName,
 				     })
@@ -31,8 +31,7 @@ const Register =()=>{
 				    await setDoc(doc (db, "users", response.user.uid), {
 				    	 uid:response.user.uid,
 				 		 displayName,
-				  		 email,
-				  		
+				  		 email,  		
 				});
 				    await setDoc(doc (db,'userChats',response.user.uid),{})
 				    console.log(response)

@@ -26,11 +26,8 @@
  .connection{
  	position: absolute;
  	place-content: center;
- 	left: 0;
- 	top: 0;
+ 	inset: 0;
  	z-index: 99;
- 	width: 100%;
- 	height: 60%;
  	transition: height .5s , visibility .1s .2s ease;
  }
  .connection.disabled{
@@ -46,6 +43,29 @@
 	align-self: center;
 	width: 8rem;
 	margin: 0 auto;	
+	opacity: .3;
+	animation: anim 3s linear infinite;
+}
+
+@keyframes anim {
+	25%{
+		opacity: .3;
+		transform: rotate(360deg);
+	}
+	50%{
+		opacity: 1;
+		transform: rotateY(45deg);
+		box-shadow:inset 4px 9px 50px var(--hover_blur);
+		border-radius: 50%;
+
+	}
+	75%{
+		opacity: .6;
+		transform: rotate(180deg);
+	}
+	100%{
+		opacity: .3;
+	}
 }
 .sub_container{
 	height: 100%;

@@ -18,7 +18,7 @@ const Chat =()=>{
 	const navigate=useNavigate()
 	const {currentUser,windowHeight} =useUniversal()
 	const {isEmoji, setIsEmoji,user,chatId,setSubOpen} = useGlobe()
-	const [messages,setMessages] =useState([''])
+	const [messages,setMessages] =useState([])
 	const [text,setText]=useState('')
 	const [img,setImg]=useState(null)
 	// const [loader,setLoader]=useState(null)
@@ -93,7 +93,7 @@ useEffect(()=>{
  const unSub= onSnapshot(doc(db,'chats',chatId), (doc)=>{
  	doc.exists() && setMessages(doc.data().messages)
  })
- setMessages([])
+ // setMessages([])
  setText('')
  return ()=> unSub()
 },[chatId])

@@ -8,17 +8,26 @@ import Sub from './sub.jsx'
 import {CircularProgress,BottomNavigation,BottomNavigationAction,} from '@mui/material'
 import {Chat,Call ,StarBorderOutlined, Archive,Settings,PersonOutlined} from '@mui/icons-material';
 import  Side from '.././minidrawer'
-import {useState} from 'react'
+import {useState,useEffect} from 'react'
  const Body =()=>{
- 	 const navigate=useNavigate()
- 	 const {windowHeight}=useUniversal()
- const {subOpen,isLoading}=useGlobe()
-
-  const [value, setValue] = useState('recents');
-
-  const handleChange = (event, newValue) => {
+ 	const navigate=useNavigate()
+ 	const {windowHeight}=useUniversal()
+ 	const {subOpen,isLoading,setIsLoading}=useGlobe()
+  	const [value, setValue] = useState('recents');
+  	const handleChange = (event, newValue) => {
     setValue(newValue);
   };
+
+  // useEffect(()=>{
+  // 	const timeout= setTimeout(()=>{
+  // 		if(isLoading){
+  // 		setIsLoading(false)
+  // 		alert('Timeout')
+  // 		}
+
+  // 		return ()=> clearTimeout(timeout)
+  // 	},100000)
+  // },[isLoading])
 
   const bottomNavList=[
   		 {

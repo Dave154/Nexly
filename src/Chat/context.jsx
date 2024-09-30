@@ -47,14 +47,13 @@ import {db} from '.././firebase.js'
 useEffect(()=>{
           const getChats =()=>{
               const unsub = onSnapshot(doc(db, "userChats", currentUser.uid), (doc) => {
-                console.log(doc.exists())
+                console.log(currentUser)
                 if(!doc.data()){
                     setIsLoading(true)
                 }else{
                   setIsLoading(false)
 
                 }
-                console.log(doc.data())
              doc.data() && setChats(doc.data()) 
             });
 
@@ -107,7 +106,8 @@ useEffect(()=>{
     setisNewChat,
     chats,
     isError,
-    isLoading
+    isLoading,
+    setIsLoading
      	}
  	}>
  		{children}

@@ -19,10 +19,13 @@
 }
 .list{
 gap: .5rem;
+position: relative;
 }
 
 .list_item{
  gap: .5rem;
+ position: relative;
+
 }
 
 .image{
@@ -36,6 +39,7 @@ aspect-ratio: 1/1;
 .text{
 	width: 100%;
 }
+
 .text > div{
 	justify-content: space-between;
 }
@@ -58,6 +62,39 @@ aspect-ratio: 1/1;
 	font-size: var(--font4);
 	color:var(--accent);
 }
+
+.more_option{
+	position: absolute;
+	z-index: ;
+	right: 0;
+	bottom: 0;
+}
+.more_option_hidden{
+	display: none;
+}
+.more_option i{
+	cursor: alias;
+}
+.more_option_deets{
+	position: absolute;
+	background: var(--hover_blur);
+	border-radius: 10px;
+	z-index: 1;
+	right: 0;
+	top: 0;
+	padding: 1rem  .5rem;
+	backdrop-filter: blur(10px);
+
+}
+.more_option_deets .more_option_list li{
+	font-size: var(--font4);
+	padding: .5rem 1rem ;
+}
+.more_option_deets .more_option_list li i svg{
+  font-size: var(--font3);
+}
+
+
 .activity{
 	background: var(--accent);
 	border-radius: 20px;
