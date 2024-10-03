@@ -1,14 +1,16 @@
-import {useUniversal} from '../../../.././context.jsx'
- import styles from './chat.module.css'
-import {useRef,useEffect} from 'react'
+import { useUniversal } from '../../../.././context.jsx'
+import styles from './chat.module.css'
+import { useRef, useEffect ,useState} from 'react'
 import logo from '../../../.././assets/logo.png'
- const Message =({message})=>{
-	const {currentUser} =useUniversal()
-	const ref = useRef(null)
-	useEffect(()=>{
-	ref.current?.scrollIntoView({behavior:'smooth'})
-},[message])
- 	return <div className={`${styles.message_box} ${message?.senderId === currentUser.uid && styles.currentUser}`}  ref={ref}>
+import { ImageOutlined } from '@mui/icons-material'
+const Message = ({ message }) => {
+    const { currentUser } = useUniversal()
+    const ref = useRef(null)
+    const [imageLoaded,setImageLoaded]=useState(false)
+    useEffect(() => {
+        ref.current?.scrollIntoView({ behavior: 'smooth' })
+    }, [message])
+    return <div className={`${styles.message_box} ${message?.senderId === currentUser.uid && styles.currentUser}`}  ref={ref}>
  		<div className={styles.message_info}>
  			
  		</div>
@@ -16,7 +18,18 @@ import logo from '../../../.././assets/logo.png'
  			{
  				message?.img && 
 			    	<div className={styles.message_img}>
-			 			<img src={message?.img} alt=""/>
+			    	{
+			    	  imageLoaded ?
+			    		<div className={`${styles.downloadImg} ${'d_grid'}`}>
+			    			<ImageOutlined sx={{
+			    				fontSize:'3rem',
+			    				color:'var(--secondary)'
+			    			}} />
+			    		</div>	: <img src={message.img} alt=""        
+			    		 onLoad={()=>setImageLoaded(false)}
+        				 onError={()=>setImageLoaded(true)}/>
+			    	}
+
 		 			</div>
  			}
  			{
@@ -24,5 +37,5 @@ import logo from '../../../.././assets/logo.png'
  			}
  		</div>
  	</div>
- }
- export default Message
+}
+export default Message

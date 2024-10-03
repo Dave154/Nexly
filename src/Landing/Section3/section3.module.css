@@ -1,0 +1,26 @@
+ .section3{
+ 	background: var(--hover_blur);
+ }
+ .section3_container{
+ 	gap: 2rem;
+ 	width: 100%;
+ 	max-width: 60rem;
+ 	margin: 0 auto;
+ 	padding: 2rem 0;
+ 	justify-content: space-between;
+ }
+ .image{
+ 	max-width:30rem;
+ 	position: relative;
+ }
+ .deets{
+   padding: 1rem 0;
+ 	max-width: 20rem;
+ }
+
+ @media (max-width:480px){
+ 	.section3_container{
+ 		flex-direction: column;
+ 		text-align: center;
+ 	}
+ }

@@ -1,0 +1,46 @@
+  .section4{
+ 	background: ;
+ }
+ .section4_container{
+ 	gap: 2rem;
+ 	width: 100%;
+ 	max-width: 70rem;
+ 	margin: 0 auto;
+ 	padding: 2rem 0;
+ 	justify-content: space-between;
+ }
+ .content button{
+ 	margin-top: 1rem;
+ }
+ .video{
+ 	max-width:40rem;
+ 	position: relative;
+ }
+ .video:before,.video:after{
+ 	 position: absolute;
+   content: '';
+   z-index: 5;
+   width: 100%;
+   	left: 0;
+    background: whitesmoke;
+ }
+ .video:before{
+ 	top: 0;
+ 	height:10%;
+
+ }
+ .video:after {
+   height: 37%;
+   bottom: 0;
+ }
+ .deets{
+   padding: 1rem 0;
+ 	max-width: 25rem;
+ }
+
+ @media (max-width:480px){
+ 	.section4_container{
+ 		flex-direction: column;
+ 		text-align: center;
+ 	}
+ }

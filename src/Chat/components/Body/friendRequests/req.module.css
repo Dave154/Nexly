@@ -1,0 +1,40 @@
+.list_container{
+ 	display: flex;
+	flex-direction: column;
+	overflow: auto;
+	padding-top: 2rem;
+	position: relative;
+	height: 100%;
+}
+.list_container::-webkit-scrollbar{
+	width: 2px;
+}
+.list_container::-webkit-scrollbar-thumb{
+	background: var(--hover);
+}
+.list{
+gap: .5rem;
+position: relative;
+}
+
+.list_item{
+ position: relative;
+ justify-content: space-between;
+
+}
+.list_item > .left{
+ gap: .5rem;
+
+}
+
+.image{
+	border-radius: 50%;
+	width: 3rem;
+	background: var(--hover);
+aspect-ratio: 1/1;
+	place-content: center;
+	overflow: hidden;
+}
+.button{
+	gap: .4rem;
+}

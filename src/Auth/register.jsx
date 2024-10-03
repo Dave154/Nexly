@@ -34,6 +34,7 @@ const Register =()=>{
 				  		 email,  		
 				});
 				    await setDoc(doc (db,'userChats',response.user.uid),{})
+				    await setDoc(doc(db,'friendRequests',response.user.uid),{})
 				    console.log(response)
 				    setLoading(false)
 				    navigate('/login')
@@ -55,3 +56,6 @@ const Register =()=>{
 	/>
    } 
  export default Register
+
+
+ 

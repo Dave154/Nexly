@@ -87,8 +87,8 @@
 	top: 0;
 	left: 0;
 	background: var(--accent);
-	width: .7rem;
-	height: .7rem;
+	width: .9rem;
+	height: .9rem;
 	border-radius: 50%;
 	position: relative;
 }
@@ -96,8 +96,9 @@
 }
 .activity span{
 	position: absolute;
-	font-size: .7rem;
-	color: var(--primary);
+	color: var(--text2);
+	font-size: var(--font5);
+	font-weight: bolder;
 	display: grid;
 	inset: 0;
 	place-content: center;

@@ -1,144 +1,150 @@
-import {useUniversal} from '../../../.././context.jsx'
+import { useUniversal } from '../../../.././context.jsx'
 import styles from './chat.module.css'
-import {Skeleton} from '@mui/material'
+import { Skeleton } from '@mui/material'
 import EmojiPicker from 'emoji-picker-react'
-import {useGlobe} from '../../.././context.jsx'
-import {useState,useEffect,useRef} from 'react'
-import { doc, onSnapshot ,updateDoc,Timestamp,arrayUnion,serverTimestamp} from "firebase/firestore";
+import { useGlobe } from '../../.././context.jsx'
+import { useState, useEffect, useRef } from 'react'
+import { doc, onSnapshot, updateDoc, Timestamp, arrayUnion, serverTimestamp } from "firebase/firestore";
 import { getStorage, ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
-import {db,storage} from '../../../.././firebase.js'
+import { db, storage } from '../../../.././firebase.js'
 import Message from './message.jsx'
 import CancelIcon from '@mui/icons-material/Cancel';
-import {Search,Mic , Send,AttachFile,AddReaction,PersonOutlined,ArrowBack} from '@mui/icons-material';
-import {CircularProgress,TextField} from '@mui/material'
-import {useNavigate,useLocation} from 'react-router-dom'
+import { Search, Mic, Send, AttachFile, AddReaction, PersonOutlined, ArrowBack } from '@mui/icons-material';
+import { CircularProgress, TextField, LinearProgress } from '@mui/material'
+import { useNavigate, useLocation } from 'react-router-dom'
 
-const Chat =()=>{
+const Chat = () => {
 
-	const navigate=useNavigate()
-	const location =useLocation()
-	const {currentUser,windowHeight} =useUniversal()
-	const {isEmoji, setIsEmoji,user,chatId,setSubOpen} = useGlobe()
-	const [messages,setMessages] =useState([])
-	const [text,setText]=useState('')
-	const [img,setImg]=useState(null)
-	const [dropImage, setDropImage] = useState('');
-	const [dragOver,setDragOver]=useState(false)
-	// const [loader,setLoader]=useState(null)
-const handleSend=async(e)=>{
-	e.preventDefault()
-	  setText('')
-	  setImg(null)
+    const navigate = useNavigate()
+    const location = useLocation()
+    const { currentUser, windowHeight } = useUniversal()
+    const { isEmoji, setIsEmoji, user, chatId, setSubOpen } = useGlobe()
+    const [messages, setMessages] = useState([])
+    const [text, setText] = useState('')
+    const [img, setImg] = useState(null)
+    const [dropType, setDropType] = useState('');
+    const [dragOver, setDragOver] = useState(false)
+    const [upload, setUpload] = useState(null)
+    const [loader, setLoader] = useState(null)
+    const handleSend = async (e) => {
+        e.preventDefault()
+        setText('')
+        setImg(null)
 
-  if(img){
-const storageRef = ref(storage, chatId);
-const uploadTask = uploadBytesResumable(storageRef, img);
-uploadTask.on('state_changed', 
-  (snapshot) => {
-    const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
-    console.log('Upload is ' + progress + '% done');
-    switch (snapshot.state) {
-      case 'paused':
-        console.log('Upload is paused');
-        break;
-      case 'running':
-        console.log('Upload is running');
-        break;
+        if (img) {
+        	setUpload(9)
+            const storageRef = ref(storage, chatId);
+            const uploadTask = uploadBytesResumable(storageRef, img);
+            uploadTask.on('state_changed',
+                (snapshot) => {
+                    const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+                },
+                (error) => {
+                    alert(error)
+                },
+                () => {
+                    getDownloadURL(uploadTask.snapshot.ref).then(async (downloadURL) => {
+                        setUpload(100)
+                        await updateDoc(doc(db, 'chats', chatId), {
+                            messages: arrayUnion({
+                                id: Math.random(new Date().getTime().toString()),
+                                text,
+                                img,
+                                senderId: currentUser.uid,
+                                date: Timestamp.now()
+                            })
+                        })
+                        setUpload(null)
+
+                    });
+                }
+            );
+
+        } else if (text !== '') {
+            await updateDoc(doc(db, 'chats', chatId), {
+                messages: arrayUnion({
+                    id: Math.random(new Date().getTime().toString()),
+                    text,
+                    senderId: currentUser.uid,
+                    date: Timestamp.now()
+                })
+            })
+        }
+        await updateDoc(doc(db, 'userChats', currentUser.uid), {
+
+            [chatId + '.date']: serverTimestamp(),
+            [chatId + '.lastMessage']: {
+                text,
+                img: img ? true : null,
+            },
+        })
+        await updateDoc(doc(db, 'userChats', user.uid), {
+            [chatId + '.lastMessage']: {
+                text,
+                img: img ? true : null
+            },
+            [chatId + '.date']: serverTimestamp()
+        })
     }
-  }, 
-  (error) => {
-   alert(error)
-  }, 
-  () => {
-      getDownloadURL(uploadTask.snapshot.ref).then( async (downloadURL) => {
-			await updateDoc(doc(db,'chats',chatId),{
-  				messages: arrayUnion({
-  					id: Math.random(new Date().getTime().toString()),
-  					text,
-  					img,
-  					senderId:currentUser.uid,
-  					date:Timestamp.now()
-  				})
-  			})
-  
-    });
-  }
-);
 
-  }else if(text !== ''){
-  			await updateDoc(doc(db,'chats',chatId),{
-  				messages: arrayUnion({
-  					id: Math.random(new Date().getTime().toString()),
-  					text,
-  					senderId:currentUser.uid,
-  					date:Timestamp.now()
-  				})
-  			})
-  }
-  await updateDoc(doc(db,'userChats',currentUser.uid),{
-  	
-  	[chatId+ '.date']:serverTimestamp(),
-  	[chatId+'.lastMessage']:{
-  		text,
-  		img: img ? true : null,
-  	},
-  })
-  await updateDoc(doc(db,'userChats',user.uid),{
-  	[chatId+'.lastMessage']:{
-  		text,
-  		img: img ? true : null
-  	},
-  	[chatId+ '.date']:serverTimestamp()
-  })
-}
+    useEffect(() => {
+        const unSub = onSnapshot(doc(db, 'chats', chatId), (doc) => {
+            if (doc.exists()) {
+                setLoader(false)
+                setMessages(doc.data().messages)
+            } else {
+                setLoader(true)
+            }
 
-useEffect(()=>{
- const unSub= onSnapshot(doc(db,'chats',chatId), (doc)=>{
- 	doc.exists() && setMessages(doc.data().messages)
- })
- // setMessages([])
- setText('')
- return ()=> unSub()
-},[chatId])
+        })
+        setMessages([])
+        setLoader(true)
+        setText('')
+        return () => unSub()
+    }, [chatId])
 
-		// DRAG AND DROP IMAGE ON THE THE CHAT COMPONENT
-  const handleDragOver = (e) => {
-    e.preventDefault();
-     e.stopPropagation();
-  };
+
+    // DRAG AND DROP IMAGE ON THE THE CHAT COMPONENT
+    const handleDragOver = (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+    };
     const handleDragEnter = (e) => {
-    e.preventDefault();
-    setDragOver(true);
-  };
-  const handleDragLeave = (e) => {
-    e.preventDefault();
+        e.preventDefault();
+        setDragOver(true);
+    };
+    const handleDrop = (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        const dataTransfer = e.dataTransfer;
+        // Case 1: Handle URL drag-and-drop from other websites
+        if (dataTransfer.items && dataTransfer.items[0].kind === 'string' && dataTransfer.items[0].type === 'text/uri-list') {
+            dataTransfer.items[0].getAsString((url) => {
+                setImg(url);
 
-  };
-  const handleDrop = (e) => {
-    e.preventDefault();
-     e.stopPropagation();
-     setDragOver(false);
-    const data = e.dataTransfer;
-    const file = data.files[0];
+            });
+        }
+        // Case 2: Handle local files (drag-and-drop from the user's file system)
+        else if (dataTransfer.files && dataTransfer.files.length > 0) {
+            const file = dataTransfer.files[0];
 
-    if (file && file.type.startsWith('image/')) {
-      const imageUrl = URL.createObjectURL(file);
-        setImg(imageUrl);
+            if (file.type.startsWith('image/')) {
+                const reader = new FileReader();
+                reader.onload = (e) => {
+                    setImg(e.target.result);
+                };
+                reader.readAsDataURL(file);
+            }
+        }
+        setDragOver(false)
+    };
 
-    }
 
-    const imageUrlFromDrag = data.getData('text/uri-list'); // URL of dragged image
-    if (imageUrlFromDrag) {
-      setDropImage(imageUrlFromDrag);
-    }
-  };
-
-	return <div className={`${styles.chat} ${'d_grid'}`} style={{
+    return <div className={`${styles.chat} ${'d_grid'}`} style={{
 		maxHeight: `${windowHeight}px`
 	}}
 			 onDragOver={handleDragOver}
       onDragEnter={handleDragEnter}
-      onDragLeave={handleDragLeave}
 	 >
 
 	{dragOver && 
@@ -170,7 +176,7 @@ useEffect(()=>{
 
 		</div>
 		<div className={`${styles.chat_container} ${'flex'}`}>
-			{messages.map(message=>{
+			{ !loader ? messages.map(message=>{
 		
 				return <div className={`${styles.message_container} ${message?.senderId === currentUser.uid && styles.currentUserCont}`}>
 			  		<div className={`${styles.image} ${'d_grid'}`}>
@@ -186,7 +192,15 @@ useEffect(()=>{
 				<Message message={message} key={message.id} />
 				</div>
 
-			})} 
+			}): 
+			<div className={` ${ styles.chat_loader} ${'d_grid'}`}>
+			 <CircularProgress size='3rem'/>
+				
+			</div>
+	
+		 		
+		 	
+		} 
 		</div>
 		<div className={`${styles.chat_form} ${'d_grid'}`}>
 		 	{
@@ -201,7 +215,11 @@ useEffect(()=>{
 		 		  </span>
 		 		</div>
 
-		 	}				<form action="" className={`${styles.form} ${'flex'}`} onSubmit={handleSend}>
+		 	}
+		 	{ upload  &&  <LinearProgress variant="determinate" value= {upload} />
+		 		
+		 }
+		 		<form action="" className={`${styles.form} ${'flex'}`} onSubmit={handleSend}>
 				<label htmlFor="file" className={` ${styles.attach} ${'clickable'}`}>
 					<AttachFile/>
 					<input id='file'  type="file" accept="image/*" onChange={(e)=>{
@@ -235,6 +253,6 @@ useEffect(()=>{
 
 		</div>
 			</div>
-	
+
 }
 export default Chat

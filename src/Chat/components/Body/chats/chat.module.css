@@ -42,10 +42,10 @@ width: 100%;
 .chat_container{
 	flex-direction: column;
 	align-items: flex-start;
-/*	background: var(--primary);*/
+	background: var(--primary);
 	gap: 1rem;
 	overflow: auto;
-	padding: 0 1rem;
+	padding: 1rem;
 	position: relative;
 	max-height:100%;
 	padding-top: 1rem;
@@ -107,6 +107,18 @@ width: 100%;
   gap: .3rem;
   width: 100%;
 
+}
+.chat_loader{
+	place-content: center;
+	width: 100%;
+	height: 100%;
+}
+.message_img .downloadImg{
+	width: 12rem;
+	height: 10rem;
+	background: rgba(40, 40, 40, .8);
+	place-content: center;
+	backdrop-filter: blur(100px);
 }
 .message_container .image{
 	width: 2rem;

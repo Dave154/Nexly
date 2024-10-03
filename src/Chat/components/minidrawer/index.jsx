@@ -1,10 +1,21 @@
 import {useState} from 'react'
 import {useUniversal} from '../../.././context.jsx'
 import styles from './miniDrawer.module.css'
-import { Menu,Chat,Call ,StarBorderOutlined, Archive,Settings,PersonOutlined} from '@mui/icons-material';
+import { Menu,Chat,Call ,StarBorderOutlined, Archive,Settings,PersonOutlined,People} from '@mui/icons-material';
 import {useGlobe} from '../.././context.jsx'
 import {useNavigate,useLocation} from 'react-router-dom'
-const topList = [
+
+const Side =()=>{
+
+  const {currentUser} =useUniversal()
+  const {displayName,photoURL,email}=currentUser
+  const navigate=useNavigate()
+  const location = useLocation()
+  const {sideOpen,
+  handleSide,
+  closeSide,
+  requestsActivity}=useGlobe()
+  const topList = [
 
     {
       id:0,
@@ -14,9 +25,10 @@ const topList = [
     },
     {
       id:1,
-      icon: <Call/>,
-      txt:'Calls',
-      route:'Calls'
+      icon: <People/>,
+      txt:'Freind Requests',
+      route:'friend_requests',
+      activity:requestsActivity,
     },
   ]
 const midList =[
@@ -50,12 +62,7 @@ const bottomList =[
     },
    
   ]
-const Side =()=>{
-  const {currentUser} =useUniversal()
-  const {displayName,photoURL,email}=currentUser
-  const navigate=useNavigate()
-  const location = useLocation()
-  const {sideOpen,handleSide,closeSide}=useGlobe()
+
   return <aside className={`${styles.sideBar } ${sideOpen && styles.active}`}>
     <div className={`${styles.sideBar_container} ${'d_grid'}`}>
     <div className={styles.content1}>
@@ -70,7 +77,7 @@ const Side =()=>{
       <ul className={`${styles.list } ${'d_grid'}`}>
         {
           topList.map((item)=>{
-        const {id,icon,txt,route} = item;
+        const {id,icon,txt,route,activity} = item;
         return <li key={id} className ={`${styles.list_item} ${(location.pathname === `/chat/${route}`) && styles.active}`} onClick={()=>{
           navigate(route)
           closeSide()
@@ -80,9 +87,11 @@ const Side =()=>{
          <p>{txt}</p>
           </div>
 
-          <div className={styles.activity}>
-          <span></span>
+           {
+            activity && <div className={styles.activity}>
+          <span> {activity}</span>
           </div>
+          }
         </li>
       })
         }
@@ -93,7 +102,7 @@ const Side =()=>{
       <ul className={`${styles.list } ${'d_grid'}`}>
         {
           midList.map((item)=>{
-        const {id,icon,txt,route} = item;
+        const {id,icon,txt,route, activity} = item;
 
         return <li key={id} className ={`${styles.list_item} ${location.pathname === `/chat/${route}` && styles.active}`} onClick={()=>{
           navigate(route)
@@ -104,9 +113,11 @@ const Side =()=>{
          <p>{txt}</p>
           </div>
 
-          <div className={styles.activity}>
-          <span></span>
+           {
+            activity && <div className={styles.activity}>
+          <span> {activity}</span>
           </div>
+          }
         </li>
       })
         }

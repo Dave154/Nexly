@@ -8,6 +8,7 @@ import Chats from './Chat/components/Body/chats'
 import Starred from './Chat/components/Body/starred'
 import Archive from './Chat/components/Body/archive'
 import Profile from './Chat/components/Body/profile'
+import Req from './Chat/components/Body/friendRequests'
 import { auth } from "./firebase";
 import {Routes,Route,Navigate} from 'react-router-dom'
 import Sub from './Chat/components/Body/sub.jsx'
@@ -19,8 +20,8 @@ const chatRoutes=[
         subroute:':id'
       },
        {
-        path:'calls',
-        element:<Starred/>,
+        path:'friend_requests',
+        element:<Req/>,
         subroute:':id'
       },
        {

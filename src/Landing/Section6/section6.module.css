@@ -1,0 +1,13 @@
+ .section6{
+
+ }
+ .section6_container{
+ 	max-width: 50rem;
+ 	text-align: center;
+ 	margin: 0 auto;
+ 	padding: 3rem;
+ 	gap: 2rem;
+ }
+ .section6_container h2{
+ 	font-size: var(--font2);
+ }

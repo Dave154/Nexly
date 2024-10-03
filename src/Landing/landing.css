@@ -1,0 +1,10 @@
+.landing{
+ background: whitesmoke;
+ color: ;
+}
+.landing >section{
+		padding: 1rem 2rem;
+}
+.landing_title{
+	text-align: center;
+}

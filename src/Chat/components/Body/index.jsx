@@ -6,7 +6,7 @@ import {useUniversal} from '../../.././context.jsx'
 import logo from '../../../assets/logo_nbg.png' 
 import Sub from './sub.jsx'
 import {CircularProgress,BottomNavigation,BottomNavigationAction,} from '@mui/material'
-import {Chat,Call ,StarBorderOutlined, Archive,Settings,PersonOutlined} from '@mui/icons-material';
+import {Chat,Call ,StarBorderOutlined, Archive,Settings,PersonOutlined,People} from '@mui/icons-material';
 import  Side from '.././minidrawer'
 import {useState,useEffect} from 'react'
  const Body =()=>{
@@ -38,9 +38,9 @@ import {useState,useEffect} from 'react'
     },
     {
       id:1,
-      icon: <Call/>,
-      txt:'Calls',
-      route:'Calls'
+      icon: <People/>,
+      txt:'Friend Requests',
+      route:'friend_requests'
     },
      {
       id:2,

@@ -1,4 +1,4 @@
-  import Title from '../title.jsx'
+import Title from '../title.jsx'
 import SearchBar from '../search.jsx'
 import styles from './chats.module.css'
 import NewChat from './newChat.jsx'

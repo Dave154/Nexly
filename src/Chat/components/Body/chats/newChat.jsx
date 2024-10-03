@@ -6,7 +6,8 @@ import Title from '.././title.jsx'
 import {useState} from 'react'
 import {db} from '../../../.././firebase.js'
 import {collection,query,where,getDocs,getDoc,setDoc,doc, updateDoc, serverTimestamp} from 'firebase/firestore'
-import {Skeleton,CircularProgress} from '@mui/material'
+import {Skeleton,CircularProgress,Button} from '@mui/material'
+import {Add} from '@mui/icons-material';
 
  const NewChat =()=>{
  	const {isNewChat, setisNewChat}=useGlobe()
@@ -31,33 +32,71 @@ import {Skeleton,CircularProgress} from '@mui/material'
 		 	}
 
  	}
- 	const handleSelect= async()=>{
+ 	// const handleAddFriend=async()=>{
+ 	// 	try{
+
+ 	// 	}
+ 	// 	catch{
+
+ 	// 	}
+ 	// }
+ 	// 	const handleAddFriend= async()=>{
+ 	// 	try {
+ 	// 	const combinedId= currentUser.uid > user.uid ? currentUser.uid + user.uid : user.uid + currentUser.uid;
+ 	// 	const res = await getDoc(doc(db,'chats', combinedId))
+ 	// 		if(!res.exists()){
+ 	// 		// create a chat in chats collection 
+ 	// 			await setDoc(doc(db,'chats',combinedId),{messages:[]})
+ 	// 		// create user chats
+ 	// 			await updateDoc(doc(db,'userChats',currentUser.uid),{
+ 	// 				 [combinedId+".userInfo"]: {
+ 	// 				 	uid:user.uid,
+ 	// 					displayName: user.displayName,
+ 	// 					photoURL: `${user.photoURL ? user.photoURL :null}`,
+ 	// 				 },
+ 	// 				 [combinedId +'.date']: serverTimestamp()
+ 	// 			})
+ 	// 				await updateDoc(doc(db,'userChats',user.uid),{
+ 	// 				 [combinedId + '.userInfo']: {
+ 	// 				 	uid: currentUser.uid,
+ 	// 					displayName: currentUser.displayName,
+ 	// 					photoURL: `${currentUser.photoURL ? currentUser.photoURL :null}`,
+ 	// 				 },
+ 	// 				 [combinedId + '.date']: serverTimestamp()
+ 	// 			})
+ 	// 		}
+ 	// 	}catch(err){
+ 	// 		alert(err)
+ 	// 		console.log(err.message)
+ 	// 	}
+ 	// 	setUserName('')
+ 	// 	setUser(null)
+ 	// 	 setisNewChat(false)
+ 	// }
+ 	const handleAddFriend= async()=>{
  		try {
  		const combinedId= currentUser.uid > user.uid ? currentUser.uid + user.uid : user.uid + currentUser.uid;
- 		console.log(combinedId)
  		const res = await getDoc(doc(db,'chats', combinedId))
- 		console.log(user.photoURL,user.displayName)
- 		console.log(currentUser.photoURL, currentUser.displayName,user.photoURL)
  			if(!res.exists()){
  			// create a chat in chats collection 
- 				await setDoc(doc(db,'chats',combinedId),{messages:[]})
+ 				// await setDoc(doc(db,'chats',combinedId),{messages:[]})
  			// create user chats
- 				await updateDoc(doc(db,'userChats',currentUser.uid),{
+ 				await updateDoc(doc(db,'friendRequests',user.uid),{
  					 [combinedId+".userInfo"]: {
- 					 	uid:user.uid,
- 						displayName: user.displayName,
- 						photoURL: `${user.photoURL ? user.photoURL :null}`,
- 					 },
- 					 [combinedId +'.date']: serverTimestamp()
- 				})
- 					await updateDoc(doc(db,'userChats',user.uid),{
- 					 [combinedId + '.userInfo']: {
- 					 	uid: currentUser.uid,
+ 					 	uid:currentUser.uid,
  						displayName: currentUser.displayName,
  						photoURL: `${currentUser.photoURL ? currentUser.photoURL :null}`,
  					 },
- 					 [combinedId + '.date']: serverTimestamp()
+ 					 [combinedId +'.date']: serverTimestamp()
  				})
+ 				// 	await updateDoc(doc(db,'userChats',user.uid),{
+ 				// 	 [combinedId + '.userInfo']: {
+ 				// 	 	uid: currentUser.uid,
+ 				// 		displayName: currentUser.displayName,
+ 				// 		photoURL: `${currentUser.photoURL ? currentUser.photoURL :null}`,
+ 				// 	 },
+ 				// 	 [combinedId + '.date']: serverTimestamp()
+ 				// })
  			}
  		}catch(err){
  			alert(err)
@@ -81,7 +120,7 @@ import {Skeleton,CircularProgress} from '@mui/material'
  		 submit={handleSearch}
  		 />
 		{
-			user ?  <div className={`${styles.list_item} ${'flex'} ${'clickable'}`} onClick={handleSelect} >
+			user ?  <div className={`${styles.list_item} ${'flex'} ${'clickable'}`} >
 					<div className={`${styles.image} ${'d_grid'}`}>
 						{user.photoURL ? <img src={user.photoURL} alt='photo'/>: <Skeleton  variant='circular' width={'3rem'} height={'3rem'} />}
 
@@ -94,7 +133,15 @@ import {Skeleton,CircularProgress} from '@mui/material'
 						{user.bio ? <p className={styles.preview}>{user.bio}</p> : <Skeleton  width={'80%'}/>}
 					   </div>
 					</div>
-				</div> : <div className={`${'d_grid'}`} style={{
+					<Button variant="outlined" startIcon={<Add />}  sx={{
+						width:'1rem',
+						fontSize:'.6rem'
+					}} 
+					onClick={handleAddFriend}
+					>
+						 Add
+					</Button>
+					</div> : <div className={`${'d_grid'}`} style={{
 					placeContent:'center',
 					paddingTop:'3rem'
 				}}>
