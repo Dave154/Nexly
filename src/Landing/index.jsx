@@ -9,7 +9,7 @@ import Particles from './Hero/particles.jsx'
  import Section4 from './Section4'
   import Section5 from './Section5'
    import Section6 from './Section6'
-      import Footer from './footer'
+      import Footer from './Footer'
  const Landing = () => {
      return <main className='landing'>
      <Particles/>
