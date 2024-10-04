@@ -55,9 +55,18 @@ const App=()=> {
       return children
     }
    }
+   const LandingRoute =({children})=>{
+     if(currentUser){
+      return <Navigate to='/chat'/>
+    }else{
+      return children
+   }
+ }
 
   return <Routes>
-    <Route path ='/' element={<Landing/>}/>
+    <Route path ='/' element={<LandingRoute>
+      <Landing/>
+    </LandingRoute>}/>
     <Route path='/Chat' element={ <ProtectedRoute>
     <Chat/>
     </ProtectedRoute>}>
