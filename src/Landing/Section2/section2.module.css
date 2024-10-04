@@ -6,7 +6,7 @@
  	padding: 2rem 0;
  }
  .section2_content{
- 	padding: 2rem;
+ 	padding: 2rem 0;
  	width: 100%;
 /* 	max-width: 	70rem;*/
  	margin: 0 auto;
@@ -30,7 +30,7 @@
 
  	}
  }
- @media (max-width:480px){
+ @media (max-width:700px){
  	.section2_container >h2{
  		max-width: 15rem;
  		margin: 0 auto;

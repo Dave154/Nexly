@@ -13,6 +13,7 @@
  .section5_content >article{
  	place-items: center;
  	gap: 1rem;
+
  }
  .section5_content >article .content{
  	background: var(--text);
@@ -21,6 +22,7 @@
  	border-radius: 20px;
  	text-align: center;
  	max-width: 30rem;
+   height: 15rem;
  }
  .content h5{
  	color: var(--accent);
@@ -52,7 +54,7 @@
  	object-fit: cover;
  }
 
-  @media (max-width:480px){
+  @media (max-width:700px){
  	.section5_content{
  		flex-direction: column;
  		text-align: center;

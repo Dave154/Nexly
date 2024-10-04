@@ -22,7 +22,7 @@ const Particle=()=>{
     () => ({
       "particles": {
           "number": {
-              "value": 160,
+              "value": 120,
               "density": {
                   "enable": false
               }
@@ -75,7 +75,6 @@ const Particle=()=>{
   );
   return <div>
  	      {init &&   <Particles
- 	      style={{ position: 'absolute', top: 0, left: 0 }}
      	 className='particles'
         id="tsparticles"
         particlesLoaded={particlesLoaded}

@@ -18,7 +18,7 @@
  	max-width: 20rem;
  }
 
- @media (max-width:480px){
+ @media (max-width:700px){
  	.section3_container{
  		flex-direction: column;
  		text-align: center;
