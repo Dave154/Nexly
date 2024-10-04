@@ -1,0 +1,194 @@
+[33mcommit cfc5fd2edfebb86591425824c40a1c9a4a675213[m[33m ([m[1;36mHEAD -> [m[1;32mmain[m[33m)[m
+Author: David Okpe <okpedavid0@gmail.com>
+Date:   Fri Oct 4 19:08:05 2024 +0100
+
+    fin
+
+[33mcommit b96abca62475d7d43aae92551c92d14aa4635098[m[33m ([m[1;31morigin/main[m[33m)[m
+Author: David Okpe <okpedavid0@gmail.com>
+Date:   Fri Oct 4 01:16:54 2024 +0100
+
+    'deployemeny_issue'
+
+[33mcommit 07deee5acefcdee09a0404c119c4f6bfc9ac9152[m
+Author: David Okpe <okpedavid0@gmail.com>
+Date:   Fri Oct 4 00:36:43 2024 +0100
+
+    'deployemeny_issue'
+
+[33mcommit 29064fcea5c86ce8a42b30a82bafb4d1871dd441[m
+Author: David Okpe <okpedavid0@gmail.com>
+Date:   Fri Oct 4 00:17:13 2024 +0100
+
+    'Landing_page'
+
+[33mcommit eb35f993fd6e11a1a2c21ad28c96b55bf06f3812[m
+Author: David Okpe <okpedavid0@gmail.com>
+Date:   Tue Oct 1 00:39:53 2024 +0100
+
+    update
+
+[33mcommit 773e21e0d505b3301bada2ae5ee4c032f43b0423[m
+Author: David Okpe <okpedavid0@gmail.com>
+Date:   Mon Sep 30 23:13:01 2024 +0100
+
+    Starred,Archive,delete,drag_and_drop_image
+
+[33mcommit eea030c17230e5f91a191247d9d75688c90d64f9[m
+Author: David Okpe <okpedavid0@gmail.com>
+Date:   Mon Sep 30 22:12:49 2024 +0100
+
+    Starred,Archive,delete,drag_and_drop_image
+
+[33mcommit c00d2414ef92a6f5196d6f700828337a62c5b72e[m
+Author: David Okpe <okpedavid0@gmail.com>
+Date:   Mon Sep 30 04:51:11 2024 +0100
+
+    loading
+
+[33mcommit 406c510c5158edefadd8447d70110552055c1367[m
+Merge: 47eca93 6938455
+Author: David Okpe <okpedavid0@gmail.com>
+Date:   Sun Sep 29 03:00:48 2024 +0100
+
+    Merge branch 'main' of https://github.com/Dave154/Nexly
+
+[33mcommit 47eca93ad3731d9b0e12caf1dbff8c0a950140a3[m
+Author: David Okpe <okpedavid0@gmail.com>
+Date:   Sun Sep 29 03:00:20 2024 +0100
+
+    image_sharing
+
+[33mcommit 6938455fe43bc3e68d11121b88688c25d4b5a65e[m
+Author: David Okpe <78057268+Dave154@users.noreply.github.com>
+Date:   Sun Sep 29 02:49:30 2024 +0100
+
+    Update README.md
+
+[33mcommit eec413496b807f52199e5728392df751dd12c1f4[m
+Author: David Okpe <okpedavid0@gmail.com>
+Date:   Fri Sep 27 13:20:39 2024 +0100
+
+    Finally_it_looks_good
+
+[33mcommit 8a0581998317e27b96b6a1ea0296e9b275fc2285[m
+Merge: d9478c3 2b23730
+Author: David Okpe <okpedavid0@gmail.com>
+Date:   Fri Sep 27 12:46:52 2024 +0100
+
+    Merge branch 'main' of https://github.com/Dave154/Nexly
+
+[33mcommit d9478c38f4b1fcdf852082b8eec90041f8b69f00[m[33m ([m[1;31morigin/sub[m[33m, [m[1;32msub[m[33m, [m[1;32mconfig[m[33m)[m
+Author: David Okpe <okpedavid0@gmail.com>
+Date:   Fri Sep 27 12:40:45 2024 +0100
+
+    'THeme_CHange'
+
+[33mcommit 2b2373070ccadef1862cccbe04c8600f16901aa2[m
+Author: David Okpe <78057268+Dave154@users.noreply.github.com>
+Date:   Thu Sep 26 20:46:14 2024 +0100
+
+    Update README.md
+
+[33mcommit b25699e1355374574280b722905bcc2e72281fe9[m
+Author: David Okpe <okpedavid0@gmail.com>
+Date:   Thu Sep 26 16:02:53 2024 +0100
+
+    'err'
+
+[33mcommit 5cd5f97fa3566fb4107e5cca979f48efdb8e70fa[m
+Author: David Okpe <okpedavid0@gmail.com>
+Date:   Thu Sep 26 15:59:35 2024 +0100
+
+    'err'
+
+[33mcommit 10922fb5b56b7e3111d52e8b8b37a6b9453c8ac3[m
+Author: David Okpe <okpedavid0@gmail.com>
+Date:   Thu Sep 26 05:44:47 2024 +0100
+
+    style_change
+
+[33mcommit 130efc739a2b563f0662b8f31178bc01f4b1e500[m
+Author: David Okpe <okpedavid0@gmail.com>
+Date:   Thu Sep 26 05:20:57 2024 +0100
+
+    ui_update
+
+[33mcommit 6f74578db2190721c7bab8c631188653c693cd2a[m
+Author: David Okpe <okpedavid0@gmail.com>
+Date:   Thu Sep 26 03:53:21 2024 +0100
+
+     UI_FIX
+
+[33mcommit 15955dcdf983eb4b4881c25ec32a2c4eb41ca91e[m
+Author: David Okpe <okpedavid0@gmail.com>
+Date:   Wed Sep 25 04:11:01 2024 +0100
+
+    'deployment_issue'
+
+[33mcommit f710db41408423a61ed74ab569baa5dade029705[m
+Author: David Okpe <okpedavid0@gmail.com>
+Date:   Wed Sep 25 04:28:29 2024 +0100
+
+    'phase1'
+
+[33mcommit 601bedec63e196d5998a008adb69885f9c7748a5[m
+Author: David Okpe <okpedavid0@gmail.com>
+Date:   Wed Sep 25 04:52:59 2024 +0100
+
+    'deployment_issue'
+
+[33mcommit a361bd7598efb91dad7b076a5d416c39cdeeb4e7[m
+Author: David Okpe <okpedavid0@gmail.com>
+Date:   Wed Sep 25 04:47:09 2024 +0100
+
+    'deployment_issue'
+
+[33mcommit 2f1553340673bca8474b07533729a6c06db22d7f[m
+Author: David Okpe <okpedavid0@gmail.com>
+Date:   Wed Sep 25 04:41:23 2024 +0100
+
+    'deployment_issue'
+
+[33mcommit 343738ce68d984008a3ae202fe21872c09c5d96c[m
+Author: David Okpe <okpedavid0@gmail.com>
+Date:   Wed Sep 25 04:39:53 2024 +0100
+
+    'deployment_issue'
+
+[33mcommit e0916ca512bf25e0a7dab03dbd52fd0175e36053[m
+Author: David Okpe <okpedavid0@gmail.com>
+Date:   Wed Sep 25 04:26:31 2024 +0100
+
+    deployment_issue
+
+[33mcommit 5653065b5b9252c2057608dabae5fb59c5048593[m
+Merge: 4749ba9 158155b
+Author: David Okpe <okpedavid0@gmail.com>
+Date:   Wed Sep 25 04:02:40 2024 +0100
+
+    Merge branch 'main' of https://github.com/Dave154/Nexly
+
+[33mcommit 4749ba968fa362d26f06595b3e907bcb0b018a83[m
+Author: David Okpe <okpedavid0@gmail.com>
+Date:   Wed Sep 25 04:01:44 2024 +0100
+
+    'progress'
+
+[33mcommit 158155bbdcecdfd68af206303fab4c7714cbba48[m
+Author: David Okpe <78057268+Dave154@users.noreply.github.com>
+Date:   Mon Sep 23 23:40:10 2024 +0100
+
+    Update README.md
+
+[33mcommit 30f4f21670d4465a1c5ffe836b27a597d8675a8a[m
+Author: David Okpe <78057268+Dave154@users.noreply.github.com>
+Date:   Mon Sep 23 23:38:38 2024 +0100
+
+    Update README.md
+
+[33mcommit 8e48844c1eec1e6e2d8b360e97d2edcfcc7ddbca[m
+Author: David Okpe <okpedavid0@gmail.com>
+Date:   Mon Sep 23 20:33:44 2024 +0100
+
+    'initial_commit'

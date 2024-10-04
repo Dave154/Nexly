@@ -1,5 +1,5 @@
  import styles from './hero.module.css'
- import Particles from './particles.jsx'
+ 
  import logo from '../.././assets/logo.png'
  import  paula from  '../.././assets/paula.png'
   import hero_girl from  '../.././assets/hero_girl.png'
@@ -85,7 +85,7 @@ import {useNavigate} from 'react-router-dom'
  		</article>
 
  		<div className={`${styles.Image} ${'d_grid'}`}>
-    {/*<Particles/>*/}
+    
  				
  			<div className={styles.image_content}>
  				<span className={styles.circle}></span>

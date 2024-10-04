@@ -25,6 +25,7 @@
 	text-align: center;
 	width: 100%;
 	color: var(--accent);
+	cursor: pointer;
 }
 .content2{
 

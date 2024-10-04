@@ -71,7 +71,7 @@ const bottomList =[
       onClick={handleSide}
       className={styles.menu_bar}
       />
-      <h2 className={`${styles.logo}`}>Nexly</h2>
+      <h2 className={`${styles.logo}`} onClick={()=>navigate('/chat')} >Nexly</h2>
      </div>
     
       <ul className={`${styles.list } ${'d_grid'}`}>

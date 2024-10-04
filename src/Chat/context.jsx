@@ -1,7 +1,8 @@
  import React, { useState, useContext, useEffect, useReducer } from 'react'
  import { doc, onSnapshot, updateDoc, serverTimestamp } from "firebase/firestore";
+ import { onMessage} from "firebase/messaging";
  import { useUniversal } from '.././context.jsx'
- import { db } from '.././firebase.js'
+ import { db} from '.././firebase.js'
  // import {collection,query,where,getDocs,getDoc,setDoc,doc, } from 'firebase/firestore'
 
  const ChatContext = React.createContext()
@@ -20,8 +21,7 @@
                  return { ...state,
                      user: action.payload,
                      chatId: currentUser.uid > action.payload.uid ?
-                         currentUser.uid + action.payload.uid :
-                         action.payload.uid + currentUser.uid
+                         currentUser.uid + action.payload.uid : action.payload.uid + currentUser.uid
                  };
 
              default:
@@ -31,8 +31,8 @@
 
      const [state, dispatch] = useReducer(chatReducer, initialState)
      const [chats, setChats] = useState({})
-     const [requests,setRequests]=useState({})
-     const [requestsActivity,setRequestsActivity] = useState(null)
+     const [requests, setRequests] = useState({})
+     const [requestsActivity, setRequestsActivity] = useState(null)
      const [sideOpen, setSideOpen] = useState(false)
      const [subOpen, setSubOpen] = useState(false)
      const [chatForm, setChatForm] = useState([])
@@ -47,15 +47,14 @@
          setSideOpen(false)
      }
 
-     const handleActivity=(number)=>{
-      if(number >= 100){
-        return '99+'
-      }else if(number <= 0){
-        return null
-      }
-      else{
-        return number
-      }
+     const handleActivity = (number) => {
+         if (number >= 100) {
+             return '99+'
+         } else if (number <= 0) {
+             return null
+         } else {
+             return number
+         }
      }
      useEffect(() => {
          const getInfo = () => {
@@ -70,7 +69,7 @@
              });
              const unsubRequests = onSnapshot(doc(db, "friendRequests", currentUser.uid), (doc) => {
                  doc.data() && setRequests(doc.data())
-                setRequestsActivity(handleActivity(Object.entries(doc.data()).length))
+                 setRequestsActivity(handleActivity(Object.entries(doc.data()).length))
              });
              return () => {
                  unsubChats()
@@ -79,7 +78,6 @@
              }
          }
          currentUser.uid && getInfo()
-     console.log(requestsActivity)
      }, [currentUser.uid])
 
      useEffect(() => {
@@ -106,10 +104,6 @@
 
      const handleSelect = async (user) => {
          dispatch({ type: 'CHANGE_USER', payload: user })
-
-
-
-
      }
      return <ChatContext.Provider value={
     {
