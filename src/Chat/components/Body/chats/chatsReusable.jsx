@@ -32,7 +32,7 @@ const moreOptionList = [
 	}]
 
 const ChatsReusable =({filter,search})=>{
-const {currentUser} =useUniversal()
+const {currentUser,windowHeight,windowWidth} =useUniversal()
 const {setSubOpen,chats,handleSelect}= useGlobe()
 const [time, setTime] = useState(new Date());
 const [visibleID, setVisibleID]= useState('')
@@ -124,7 +124,9 @@ const closeMenu=(e)=>{
   	}
   }
 	return <article className={`${styles.chats} ${'d_grid'}`}>
-		<div className={`${styles.list_container} `}>
+		<div className={`${styles.list_container} `} style={{
+			height: `${ (windowWidth < 700) ?  windowHeight - 200 : windowHeight - 150}px`
+		}}>
 			<ul className={`${styles.list} ${'d_grid'}`}>
 				{ 
 					Object.entries(chats).filter(item=>{

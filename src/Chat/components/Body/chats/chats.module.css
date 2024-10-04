@@ -80,17 +80,17 @@ aspect-ratio: 1/1;
 }
 .more_option_deets{
 	position: absolute;
-	background: var(--hover_blur);
+	background: var(--hover);
 	border-radius: 10px;
 	z-index: 1;
 	right: 0;
 	top: 0;
 	padding: 1rem  .5rem;
-	backdrop-filter: blur(10px);
+
 
 }
 .more_option_deets .more_option_list li{
-	font-size: var(--font4);
+	font-size: var(--font3);
 	padding: .5rem 1rem ;
 }
 .more_option_deets .more_option_list li i svg{
@@ -181,7 +181,6 @@ aspect-ratio: 1/1;
 
 @media (max-width:700px){
 .list_container{
-	height: calc(100% - 4rem);
 }
 	.text .preview{
  		max-width: 70vw;

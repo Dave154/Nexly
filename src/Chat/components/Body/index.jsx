@@ -39,7 +39,7 @@ import {useState,useEffect} from 'react'
     {
       id:1,
       icon: <People/>,
-      txt:'Friend Requests',
+      txt:'Request',
       route:'friend_requests'
     },
      {
